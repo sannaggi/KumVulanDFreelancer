@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">KumVulanDFreelancer</string>
+    <string name="home">Home</string>
+    <string name="jobs">Jobs</string>
+    <string name="account">Account</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="guest_page_image">guest page image</string>
+    <string name="guest_login_desc">You are using guest session, which means you won\'t be able to take jobs!</string>
+    <string name="prompt_guest_login">To login / register, use the following</string>
+    <string name="login_register">Login/Register</string>
+    <string name="server_client_id">460995354164-6pc9p4a7esviqdj7jk8m4si2i1nee1c8.apps.googleusercontent.com</string>
+</resources>
