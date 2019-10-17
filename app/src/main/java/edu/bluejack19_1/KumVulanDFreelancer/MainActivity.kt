@@ -2,6 +2,7 @@ package edu.bluejack19_1.KumVulanDFreelancer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.kumvulandfreelancer.Fragments.JobsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -10,6 +11,26 @@ import edu.bluejack19_1.KumVulanDFreelancer.Fragments.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    override fun onStart() {
+        super.onStart()
+
+        val currentUser = firebaseAuth().currentUser
+        Log.d("firebase", "initial")
+
+        val testData = hashMapOf(
+            "name" to "asd",
+            "asd" to 123
+        )
+        if(currentUser != null) {
+            Log.d("firebase", "aaaa")
+            firebaseDatabase().collection("users")
+                .document(currentUser.email + "")
+                .set(testData)
+        } else {
+            Log.d("firebase", "current user null")
+        }
+    }
 
     private fun addFragment(fragment: Fragment) {
         supportFragmentManager

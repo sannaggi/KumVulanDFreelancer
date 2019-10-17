@@ -11,5 +11,5 @@
     <string name="guest_login_desc">You are using guest session, which means you won\'t be able to take jobs!</string>
     <string name="prompt_guest_login">To login / register, use the following</string>
     <string name="login_register">Login/Register</string>
-    <string name="server_client_id">460995354164-6pc9p4a7esviqdj7jk8m4si2i1nee1c8.apps.googleusercontent.com</string>
+    <string name="profile_image">Profile image</string>
 </resources>
