@@ -26,7 +26,9 @@ class MainActivity : AppCompatActivity() {
             Log.d("firebase", "aaaa")
             firebaseDatabase().collection("users")
                 .document(currentUser.email + "")
-                .set(testData)
+                .get().addOnSuccessListener {
+                    User.data = it.data
+                }
         } else {
             Log.d("firebase", "current user null")
         }

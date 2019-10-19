@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import edu.bluejack19_1.KumVulanDFreelancer.R
+import edu.bluejack19_1.KumVulanDFreelancer.User
 import edu.bluejack19_1.KumVulanDFreelancer.firebaseStorage
 import edu.bluejack19_1.KumVulanDFreelancer.firebaseStorageReference
 import kotlinx.android.synthetic.main.fragment_account.*
@@ -29,9 +30,9 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        Log.d("firebase", "${PROFILE_IMAGE_DIR}/ddd.png")
-        Log.d("firebase", firebaseStorageReference().child("${PROFILE_IMAGE_DIR}/ddd.png").toString())
-        firebaseStorageReference().child("${PROFILE_IMAGE_DIR}/ddd.png").downloadUrl.addOnSuccessListener{
+        txtName.text = User.data?.get("name").toString()
+
+        firebaseStorageReference().child("${PROFILE_IMAGE_DIR}/${User.data?.get("profile_image")}").downloadUrl.addOnSuccessListener{
             uri -> Glide.with(this)
             .load(uri)
             .into(profileImage)
