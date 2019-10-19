@@ -12,22 +12,21 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var homeFragment: HomeFragment
+    private lateinit var jobsFragment: JobsFragment
+    private lateinit var accountFragment: AccountFragment
+
     override fun onStart() {
         super.onStart()
 
         val currentUser = firebaseAuth().currentUser
-        Log.d("firebase", "initial")
 
-        val testData = hashMapOf(
-            "name" to "asd",
-            "asd" to 123
-        )
         if(currentUser != null) {
-            Log.d("firebase", "aaaa")
             firebaseDatabase().collection("users")
                 .document(currentUser.email + "")
                 .get().addOnSuccessListener {
                     User.data = it.data
+                    Log.d("firebase", "curr user initiated: ${it.data.toString()}")
                 }
         } else {
             Log.d("firebase", "current user null")
@@ -45,18 +44,21 @@ class MainActivity : AppCompatActivity() {
     private val navListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
             R.id.nav_home -> {
-                val fragment = HomeFragment()
-                addFragment(fragment)
+                addFragment(homeFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_jobs -> {
-                val fragment = JobsFragment()
-                addFragment(fragment)
+                if(!::jobsFragment.isInitialized) {
+                    jobsFragment = JobsFragment()
+                }
+                addFragment(jobsFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_account -> {
-                val fragment = AccountFragment()
-                addFragment(fragment)
+                if(!::accountFragment.isInitialized) {
+                    accountFragment = AccountFragment()
+                }
+                addFragment(accountFragment)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -69,7 +71,8 @@ class MainActivity : AppCompatActivity() {
 
         bottom_navigation.setOnNavigationItemSelectedListener(navListener)
 
-        addFragment(HomeFragment())
+        homeFragment = HomeFragment()
+        addFragment(homeFragment)
 
 
     }
