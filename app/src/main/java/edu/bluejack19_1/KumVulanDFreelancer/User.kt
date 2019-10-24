@@ -9,5 +9,10 @@ class User {
         val PROFILE_IMAGE = "profile_image"
         val RATING = "rating"
         val NAME = "name"
+        val ACADEMIC = "academic"
+        val REVIEWS = "reviews"
+        val SKILLS = "skills"
+        val ABOUT = "about"
+        val PROFILE_IMAGE_DIR = "/profile_images"
     }
 }

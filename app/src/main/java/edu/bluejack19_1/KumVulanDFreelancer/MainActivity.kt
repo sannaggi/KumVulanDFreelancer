@@ -8,6 +8,7 @@ import com.example.kumvulandfreelancer.Fragments.JobsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragment
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.HomeFragment
+import edu.bluejack19_1.KumVulanDFreelancer.adapters.ReviewAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -73,7 +74,5 @@ class MainActivity : AppCompatActivity() {
 
         homeFragment = HomeFragment()
         addFragment(homeFragment)
-
-
     }
 }

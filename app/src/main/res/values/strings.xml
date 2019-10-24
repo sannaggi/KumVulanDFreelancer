@@ -14,4 +14,8 @@
     <string name="profile_image">Profile image</string>
     <string name="profile_jobs_done">Jobs done: %1$s</string>
     <string name="profile_rating">Rating: %1$s ★</string>
+    <string name="profile_skills">Skills:</string>
+    <string name="profile_about">About me: </string>
+    <string name="academic_record">Academic record: </string>
+    <string name="profile_review">Reviews: </string>
 </resources>
