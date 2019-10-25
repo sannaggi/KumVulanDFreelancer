@@ -1,8 +1,8 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
-class Review {
-    lateinit var name: String
-    lateinit var profileImage: String
-    lateinit var rating: Number
-    lateinit var review: String
+class Review(name: String, profile_image: String, rating: Number, review: String) {
+    val name = name
+    val profile_image = profile_image
+    val rating = rating
+    val review = review
 }

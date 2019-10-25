@@ -1,6 +1,7 @@
 package edu.bluejack19_1.KumVulanDFreelancer.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,10 +22,12 @@ class ReviewAdapter(private val context: Context, private val reviews: List<Revi
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
+        Log.d("firebase", reviews.size.toString())
         return reviews.size
     }
 
     override fun getItem(position: Int): Any {
+        Log.d("firebase", position.toString())
         return reviews[position]
     }
 
@@ -42,7 +45,7 @@ class ReviewAdapter(private val context: Context, private val reviews: List<Revi
 
         val review = getItem(position) as Review
 
-        firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/${review.profileImage}").downloadUrl.addOnSuccessListener{
+        firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/${review.profile_image}").downloadUrl.addOnSuccessListener{
                 uri -> Glide.with(context)
             .load(uri)
             .thumbnail(0.25f)

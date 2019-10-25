@@ -11,6 +11,7 @@ class User {
         val NAME = "name"
         val ACADEMIC = "academic"
         val REVIEWS = "reviews"
+        val REVIEW = "review"
         val SKILLS = "skills"
         val ABOUT = "about"
         val PROFILE_IMAGE_DIR = "/profile_images"

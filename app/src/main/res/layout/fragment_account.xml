@@ -2,7 +2,6 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
@@ -73,68 +72,65 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:orientation="vertical">
+            android:paddingRight="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_skills"
-                android:textSize="22sp"/>
+                android:textSize="22sp" />
 
             <com.google.android.flexbox.FlexboxLayout
                 android:id="@+id/skillsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:flexWrap="wrap"
+                app:alignContent="stretch"
                 app:alignItems="stretch"
-                app:alignContent="stretch" >
+                app:flexWrap="wrap">
 
             </com.google.android.flexbox.FlexboxLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/profile_about"
                 android:layout_marginTop="20dp"
-                android:textSize="22sp"/>
+                android:text="@string/profile_about"
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/txtAbout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/profile_about"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/academic_record"
                 android:layout_marginTop="20dp"
-                android:textSize="22sp"/>
+                android:text="@string/academic_record"
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/txtAcademic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/academic_record"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/profile_review"
                 android:layout_marginTop="20dp"
-                android:textSize="22sp"/>
+                android:text="@string/profile_review"
+                android:textSize="22sp" />
 
             <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:id="@+id/listReview"
-             >
-
-            </ListView>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

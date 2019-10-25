@@ -20,6 +20,7 @@ import edu.bluejack19_1.KumVulanDFreelancer.adapters.ReviewAdapter
 import kotlinx.android.synthetic.main.fragment_account.*
 import org.w3c.dom.Text
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AccountFragment : Fragment() {
 
@@ -45,7 +46,7 @@ class AccountFragment : Fragment() {
 
     private fun loadProfileImage(data: Map<String, Any>?) {
 
-        firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/${data?.get("profile_image")}").downloadUrl.addOnSuccessListener{
+        firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/${data?.get(User.PROFILE_IMAGE)}").downloadUrl.addOnSuccessListener{
                 uri -> Glide.with(this)
             .load(uri)
             .thumbnail(0.25f)
@@ -79,10 +80,37 @@ class AccountFragment : Fragment() {
         txtAcademic.text = data?.get(User.ACADEMIC).toString()
     }
 
+    private fun getReviewArrayList(list: ArrayList<Map<String, Any>>): ArrayList<Review> {
+        var reviews: ArrayList<Review> = ArrayList()
+
+        for (i in 0..4) {
+            val name = list[i].get(User.NAME).toString()
+            val profile_image = list[i].get(User.PROFILE_IMAGE).toString()
+            val rating = list[i].get(User.RATING).toString().toBigDecimal()
+            Log.d("firebase", "asd")
+            val review = list[i].get(User.REVIEW).toString()
+            reviews.add(Review(name, profile_image, rating, review))
+        }
+        return reviews
+    }
+
     private fun loadReview(data: Map<String, Any>?) {
-        val reviews = data?.get(User.REVIEWS) as List<Review>
-        val adapter = ReviewAdapter(this.context!!, reviews)
+        val reviews = data?.get(User.REVIEWS) as ArrayList<Map<String, Any>>
+        Log.d("firebase", reviews.toString())
+        val adapter = ReviewAdapter(this.context!!, getReviewArrayList(reviews))
         listReview.adapter = adapter
+
+        var totalHeight = 0
+        for(i in 0..4) {
+            val item = adapter.getView(i, null, listReview)
+            item.measure(0, 0)
+            totalHeight += item.measuredHeight
+        }
+
+        val params = listReview.layoutParams
+        params.height = totalHeight + (listReview.dividerHeight * (listReview.count - 1))
+        listReview.layoutParams = params
+        Log.d("firebase", totalHeight.toString())
     }
 
     private fun loadProfileDatas() {
