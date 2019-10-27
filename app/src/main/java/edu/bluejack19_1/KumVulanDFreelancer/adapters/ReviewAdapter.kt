@@ -22,12 +22,10 @@ class ReviewAdapter(private val context: Context, private val reviews: List<Revi
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     override fun getCount(): Int {
-        Log.d("firebase", reviews.size.toString())
         return reviews.size
     }
 
     override fun getItem(position: Int): Any {
-        Log.d("firebase", position.toString())
         return reviews[position]
     }
 

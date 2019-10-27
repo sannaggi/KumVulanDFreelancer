@@ -15,7 +15,6 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@mipmap/guestcartoon"
             android:layout_marginRight="12dp"
             android:id="@+id/imgProfile"/>
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -22,7 +23,9 @@ import org.w3c.dom.Text
 import java.util.*
 import kotlin.collections.ArrayList
 
-class AccountFragment : Fragment() {
+class AccountFragment(parent: MainActivity) : Fragment() {
+
+    val parent = parent
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -87,7 +90,6 @@ class AccountFragment : Fragment() {
             val name = list[i].get(User.NAME).toString()
             val profile_image = list[i].get(User.PROFILE_IMAGE).toString()
             val rating = list[i].get(User.RATING).toString().toBigDecimal()
-            Log.d("firebase", "asd")
             val review = list[i].get(User.REVIEW).toString()
             reviews.add(Review(name, profile_image, rating, review))
         }
@@ -110,7 +112,6 @@ class AccountFragment : Fragment() {
         val params = listReview.layoutParams
         params.height = totalHeight + (listReview.dividerHeight * (listReview.count - 1))
         listReview.layoutParams = params
-        Log.d("firebase", totalHeight.toString())
     }
 
     private fun loadProfileDatas() {
@@ -126,7 +127,16 @@ class AccountFragment : Fragment() {
         loadReview(data)
     }
 
+    private fun initializeLogoutButton() {
+        btnLogout.setOnClickListener {
+            firebaseAuth().signOut()
+            parent.logout()
+
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProfileDatas()
+        initializeLogoutButton()
     }
 }

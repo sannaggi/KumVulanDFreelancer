@@ -8,30 +8,18 @@ import com.example.kumvulandfreelancer.Fragments.JobsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragment
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.HomeFragment
-import edu.bluejack19_1.KumVulanDFreelancer.adapters.ReviewAdapter
+import edu.bluejack19_1.KumVulanDFreelancer.fragments.AccountFragmentGuest
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var homeFragment: HomeFragment
     private lateinit var jobsFragment: JobsFragment
-    private lateinit var accountFragment: AccountFragment
+    private lateinit var accountFragment: Fragment
 
-    override fun onStart() {
-        super.onStart()
-
-        val currentUser = firebaseAuth().currentUser
-
-        if(currentUser != null) {
-            firebaseDatabase().collection("users")
-                .document(currentUser.email + "")
-                .get().addOnSuccessListener {
-                    User.data = it.data
-                    Log.d("firebase", "curr user initiated: ${it.data.toString()}")
-                }
-        } else {
-            Log.d("firebase", "current user null")
-        }
+    fun logout() {
+        accountFragment = AccountFragmentGuest(this)
+        addFragment(accountFragment)
     }
 
     private fun addFragment(fragment: Fragment) {
@@ -49,16 +37,10 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_jobs -> {
-                if(!::jobsFragment.isInitialized) {
-                    jobsFragment = JobsFragment()
-                }
                 addFragment(jobsFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_account -> {
-                if(!::accountFragment.isInitialized) {
-                    accountFragment = AccountFragment()
-                }
                 addFragment(accountFragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -72,7 +54,25 @@ class MainActivity : AppCompatActivity() {
 
         bottom_navigation.setOnNavigationItemSelectedListener(navListener)
 
+
+        val currentUser = firebaseAuth().currentUser
+
+        if(currentUser != null) {
+            firebaseDatabase().collection("users")
+                .document(currentUser.email + "")
+                .get().addOnSuccessListener {
+                    User.data = it.data
+                    Log.d("firebase", "curr user initiated: ${it.data.toString()}")
+                }
+            accountFragment = AccountFragment(this)
+        } else {
+            Log.d("firebase", "current user null")
+            accountFragment = AccountFragmentGuest(this)
+        }
+
         homeFragment = HomeFragment()
+        jobsFragment = JobsFragment()
+
         addFragment(homeFragment)
     }
 }
