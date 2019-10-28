@@ -27,7 +27,7 @@
 
                 android:cropToPadding="false"
                 android:fitsSystemWindows="false"
-                tools:src="@mipmap/guest_picture_foreground" />
+                android:src="@drawable/guest_picture"/>
 
             <TextView
                 android:id="@+id/txtName"

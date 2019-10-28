@@ -1,5 +1,6 @@
 package edu.bluejack19_1.KumVulanDFreelancer.Fragments
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -41,21 +42,21 @@ class AccountFragment(parent: MainActivity) : Fragment() {
         System.last_activity = System.ACCOUNT_FRAGMENT
     }
 
-    private fun loadName(data: Map<String, Any>?) {
-        txtName.text = data?.get(User.NAME).toString()
+    private fun loadName() {
+        txtName.text = User.getName()
     }
 
-    private fun loadJobsTaken(data: Map<String, Any>?) {
-        txtJobsTaken.text = getString(R.string.profile_jobs_done, data?.get(User.JOBS_DONE).toString())
+    private fun loadJobsTaken() {
+        txtJobsTaken.text = getString(R.string.profile_jobs_done, User.getJobsDone().toString())
     }
 
-    private fun loadRating(data: Map<String, Any>?) {
-        txtRating.text = getString(R.string.profile_rating, data?.get(User.RATING).toString())
+    private fun loadRating() {
+        txtRating.text = getString(R.string.profile_rating, User.getRating())
     }
 
-    private fun loadProfileImage(data: Map<String, Any>?) {
+    private fun loadProfileImage() {
 
-        firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/${data?.get(User.PROFILE_IMAGE)}").downloadUrl.addOnSuccessListener{
+        firebaseStorageReference().child(User.getProfileImage()).downloadUrl.addOnSuccessListener{
                 uri -> Glide.with(this)
             .load(uri)
             .thumbnail(0.25f)
@@ -65,10 +66,14 @@ class AccountFragment(parent: MainActivity) : Fragment() {
 //      uri -> Picasso.with(this.context).load(uri).into(profileImage)
     }
 
-    private fun loadSkills(data: Map<String, Any>?) {
-        val skills = data?.get(User.SKILLS) as List<String>
+    private fun loadSkills() {
+        val skills = User.getSkills()
+
+        val asd: ArrayList<View> = ArrayList()
 
         skills.forEach {
+
+
             var skill: TextView = View.inflate(context, R.layout.profile_skill, null) as TextView
             skill.text = it
 
@@ -81,12 +86,12 @@ class AccountFragment(parent: MainActivity) : Fragment() {
 
     }
 
-    private fun loadAbout(data: Map<String, Any>?) {
-        txtAbout.text = data?.get(User.ABOUT).toString()
+    private fun loadAbout() {
+        txtAbout.text = User.getAbout()
     }
 
-    private fun loadAcademic(data: Map<String, Any>?) {
-        txtAcademic.text = data?.get(User.ACADEMIC).toString()
+    private fun loadAcademic() {
+        txtAcademic.text = User.getAcademicRecord()
     }
 
     private fun getReviewArrayList(list: ArrayList<Map<String, Any>>): ArrayList<Review> {
@@ -102,8 +107,8 @@ class AccountFragment(parent: MainActivity) : Fragment() {
         return reviews
     }
 
-    private fun loadReview(data: Map<String, Any>?) {
-        val reviews = data?.get(User.REVIEWS) as ArrayList<Map<String, Any>>
+    private fun loadReview() {
+        val reviews = User.getReviews()
         val adapter = ReviewAdapter(this.context!!, getReviewArrayList(reviews))
         listReview.adapter = adapter
 
@@ -122,26 +127,33 @@ class AccountFragment(parent: MainActivity) : Fragment() {
     private fun loadProfileDatas() {
         val data = User.data
 
-        loadProfileImage(data)
-        loadName(data)
-        loadJobsTaken(data)
-        loadRating(data)
-        loadSkills(data)
-        loadAbout(data)
-        loadAcademic(data)
-        loadReview(data)
+        loadProfileImage()
+        loadName()
+        loadJobsTaken()
+        loadRating()
+        loadSkills()
+        loadAbout()
+        loadAcademic()
+        loadReview()
     }
 
     private fun initializeLogoutButton() {
         btnLogout.setOnClickListener {
             firebaseAuth().signOut()
             parent.logout()
+        }
+    }
 
+    private fun initializeEditButton() {
+        btnEdit.setOnClickListener {
+            val intent = Intent(this.context, EditProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProfileDatas()
         initializeLogoutButton()
+        initializeEditButton()
     }
 }

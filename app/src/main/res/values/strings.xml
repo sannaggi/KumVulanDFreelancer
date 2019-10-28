@@ -20,7 +20,11 @@
     <string name="profile_review">Reviews: </string>
     <string name="profile_logout">Log out</string>
     <string name="profile_not_logged_in">You are not logged in!</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_edit">Edit Profile</string>
+    <string name="change_profile_photo">Change Profile Photo</string>
+    <string name="name">Name</string>
+    <string name="about_me">About me</string>
+    <string name="academic_record_e">Academic record</string>
+    <string name="skills_e">Skills</string>
+    <string name="save_changes">Save changes</string>
 </resources>
