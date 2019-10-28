@@ -35,6 +35,12 @@ class AccountFragment(parent: MainActivity) : Fragment() {
         return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        System.last_activity = System.ACCOUNT_FRAGMENT
+    }
+
     private fun loadName(data: Map<String, Any>?) {
         txtName.text = data?.get(User.NAME).toString()
     }
@@ -98,7 +104,6 @@ class AccountFragment(parent: MainActivity) : Fragment() {
 
     private fun loadReview(data: Map<String, Any>?) {
         val reviews = data?.get(User.REVIEWS) as ArrayList<Map<String, Any>>
-        Log.d("firebase", reviews.toString())
         val adapter = ReviewAdapter(this.context!!, getReviewArrayList(reviews))
         listReview.adapter = adapter
 

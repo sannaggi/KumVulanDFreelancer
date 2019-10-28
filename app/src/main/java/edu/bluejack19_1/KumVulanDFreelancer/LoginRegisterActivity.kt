@@ -1,6 +1,7 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,7 @@ import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragment
 import kotlinx.android.synthetic.main.activity_login_register.*
 
 class LoginRegisterActivity : AppCompatActivity() {
@@ -69,8 +71,19 @@ class LoginRegisterActivity : AppCompatActivity() {
                     val user = firebaseAuth().currentUser
                     Log.d("firebase", user.toString())
 
-                    if(user != null) {
+                    val currentUser = firebaseAuth().currentUser
 
+                    if(user != null) {
+                        firebaseDatabase().collection("users")
+                            .document(currentUser!!.email + "")
+                            .get().addOnSuccessListener {
+                                User.data = it.data
+                                Log.d("firebase", "curr user initiated: ${it.data.toString()}")
+                            }.addOnSuccessListener {
+//                                MainActivity.instance.login()
+                                finish()
+                                System.last_activity = System.LOGIN_REGISTER_ACTIVITY
+                            }
 
                     } else {
                         // create new user

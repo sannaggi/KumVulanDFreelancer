@@ -22,6 +22,15 @@ class MainActivity : AppCompatActivity() {
         addFragment(accountFragment)
     }
 
+    fun loginFromAccount() {
+        accountFragment = AccountFragment(this)
+        addFragment(accountFragment)
+    }
+
+    fun loginFromHome() {
+        accountFragment = AccountFragment(this)
+    }
+
     private fun addFragment(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
@@ -41,6 +50,8 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_account -> {
+                if(!::accountFragment.isInitialized)
+                    return@OnNavigationItemSelectedListener true
                 addFragment(accountFragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -63,14 +74,15 @@ class MainActivity : AppCompatActivity() {
                 .get().addOnSuccessListener {
                     User.data = it.data
                     Log.d("firebase", "curr user initiated: ${it.data.toString()}")
+                }.addOnSuccessListener {
+                    accountFragment = AccountFragment(this)
                 }
-            accountFragment = AccountFragment(this)
         } else {
             Log.d("firebase", "current user null")
             accountFragment = AccountFragmentGuest(this)
         }
 
-        homeFragment = HomeFragment()
+        homeFragment = HomeFragment(this)
         jobsFragment = JobsFragment()
 
         addFragment(homeFragment)

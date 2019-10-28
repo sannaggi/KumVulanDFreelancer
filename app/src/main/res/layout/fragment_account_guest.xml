@@ -41,7 +41,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/loginRegisterBtn"
+            android:id="@+id/btnLoginRegister"
             android:layout_width="216dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
