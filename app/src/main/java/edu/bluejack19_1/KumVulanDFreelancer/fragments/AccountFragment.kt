@@ -39,6 +39,10 @@ class AccountFragment(parent: MainActivity) : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        if(System.last_activity == System.EDIT_PROFILE_ACTIVITY) {
+            loadEditableDatas()
+        }
+
         System.last_activity = System.ACCOUNT_FRAGMENT
     }
 
@@ -68,12 +72,9 @@ class AccountFragment(parent: MainActivity) : Fragment() {
 
     private fun loadSkills() {
         val skills = User.getSkills()
-
-        val asd: ArrayList<View> = ArrayList()
+        skillsContainer.removeAllViews()
 
         skills.forEach {
-
-
             var skill: TextView = View.inflate(context, R.layout.profile_skill, null) as TextView
             skill.text = it
 
@@ -96,8 +97,12 @@ class AccountFragment(parent: MainActivity) : Fragment() {
 
     private fun getReviewArrayList(list: ArrayList<Map<String, Any>>): ArrayList<Review> {
         var reviews: ArrayList<Review> = ArrayList()
+        var size = list.size
 
-        for (i in 0..4) {
+        if(size >= 5)
+            size = 5
+
+        for (i in 0 until size) {
             val name = list[i].get(User.NAME).toString()
             val profile_image = list[i].get(User.PROFILE_IMAGE).toString()
             val rating = list[i].get(User.RATING).toString().toBigDecimal()
@@ -112,8 +117,13 @@ class AccountFragment(parent: MainActivity) : Fragment() {
         val adapter = ReviewAdapter(this.context!!, getReviewArrayList(reviews))
         listReview.adapter = adapter
 
+        var size = reviews.size
+
+        if(size >= 5)
+            size = 5
+
         var totalHeight = 0
-        for(i in 0..4) {
+        for(i in 0 until size) {
             val item = adapter.getView(i, null, listReview)
             item.measure(0, 0)
             totalHeight += item.measuredHeight
@@ -124,16 +134,18 @@ class AccountFragment(parent: MainActivity) : Fragment() {
         listReview.layoutParams = params
     }
 
-    private fun loadProfileDatas() {
-        val data = User.data
-
+    private fun loadEditableDatas() {
         loadProfileImage()
         loadName()
-        loadJobsTaken()
-        loadRating()
         loadSkills()
         loadAbout()
         loadAcademic()
+    }
+
+    private fun loadProfileDatas() {
+        loadEditableDatas()
+        loadJobsTaken()
+        loadRating()
         loadReview()
     }
 

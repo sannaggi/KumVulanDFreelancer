@@ -77,7 +77,7 @@ class LoginRegisterActivity : AppCompatActivity() {
                         firebaseDatabase().collection("users")
                             .document(currentUser!!.email + "")
                             .get().addOnSuccessListener {
-                                User.data = it.data
+                                User.data = it.data as HashMap<String, Any>
                                 Log.d("firebase", "curr user initiated: ${it.data.toString()}")
                             }.addOnSuccessListener {
 //                                MainActivity.instance.login()

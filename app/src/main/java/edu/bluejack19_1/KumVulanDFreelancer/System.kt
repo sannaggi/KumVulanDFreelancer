@@ -10,5 +10,6 @@ class System {
         val JOB_FRAGMENT = "jobFragment"
         val ACCOUNT_FRAGMENT = "accountFragment"
         val ACCOUNT_FRAGMENT_GUEST = "accountFragmentGuest"
+        val EDIT_PROFILE_ACTIVITY = "editProfileActivity"
     }
 }

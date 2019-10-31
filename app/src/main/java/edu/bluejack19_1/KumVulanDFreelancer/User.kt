@@ -5,7 +5,7 @@ import java.math.BigDecimal
 class User {
 
     companion object {
-        var data: Map<String, Any>? = emptyMap()
+        var data: HashMap<String, Any>? = HashMap()
 
         val JOBS_DONE = "jobs_done"
         val PROFILE_IMAGE = "profile_image"
@@ -19,7 +19,11 @@ class User {
         val PROFILE_IMAGE_DIR = "/profile_images"
 
         fun getProfileImage(): String {
-            return "${PROFILE_IMAGE_DIR}/${data?.get(PROFILE_IMAGE)}"
+            return "${PROFILE_IMAGE_DIR}/${getProfileImageName()}"
+        }
+
+        fun getProfileImageName(): String {
+            return data?.get(PROFILE_IMAGE).toString()
         }
 
         fun getName(): String {
