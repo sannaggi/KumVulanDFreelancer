@@ -60,13 +60,18 @@ class AccountFragment(parent: MainActivity) : Fragment() {
 
     private fun loadProfileImage() {
 
-        firebaseStorageReference().child(User.getProfileImage()).downloadUrl.addOnSuccessListener{
+        Log.d("firebase", User.getProfileImage())
+        firebaseStorageReference()
+            .child(User.getProfileImage())
+            .downloadUrl
+            .addOnSuccessListener{
                 uri -> Glide.with(this)
-            .load(uri)
-            .thumbnail(0.25f)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(profileImage)
-        }
+                    .load(uri)
+                    .into(profileImage)
+            }
+            .addOnFailureListener {
+                Log.d("firebase-error", it.toString())
+            }
 //      uri -> Picasso.with(this.context).load(uri).into(profileImage)
     }
 

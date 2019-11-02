@@ -17,5 +17,5 @@ fun firebaseStorage(): FirebaseStorage {
 }
 
 fun firebaseStorageReference(): StorageReference {
-    return FirebaseStorage.getInstance().reference
+    return firebaseStorage().reference
 }

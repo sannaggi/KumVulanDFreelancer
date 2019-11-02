@@ -1,12 +1,18 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
+import android.Manifest
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -16,12 +22,20 @@ import kotlinx.android.synthetic.main.activity_edit_profile.skillsContainer
 import kotlinx.android.synthetic.main.activity_edit_profile.txtAbout
 import kotlinx.android.synthetic.main.activity_edit_profile.txtAcademic
 import kotlinx.android.synthetic.main.activity_edit_profile.txtName
-import kotlinx.android.synthetic.main.fragment_account.*
 import kotlinx.android.synthetic.main.profile_edit_skill.view.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class EditProfileActivity : AppCompatActivity() {
 
     var skillsList: ArrayList<View> = ArrayList()
+    lateinit var imagePath: Uri
+
+    companion object {
+        private val IMAGE_PICK_CODE = 1000
+        private val PERMISSION_CODE = 1001
+    }
 
     override fun onResume() {
         super.onResume()
@@ -85,9 +99,9 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun getNewProfileDatas(): HashMap<String, Any> {
+    private fun getNewProfileDatas(imageName: String): HashMap<String, Any> {
         val name = txtName.text.toString()
-        val profileImage = User.getProfileImageName().toString()
+        val profileImage = if (imageName.isEmpty()) User.getProfileImageName() else imageName
         val skills = getSkills()
         val about = txtAbout.text.toString()
         val academic = txtAcademic.text.toString()
@@ -115,17 +129,66 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun initializeCommitButton() {
         btnCommit.setOnClickListener {
-            val data = getNewProfileDatas()
-            firebaseDatabase().collection("users")
-                .document(firebaseAuth().currentUser!!.email + "")
-                .set(data).addOnSuccessListener {
-                    refreshUserData(data)
-                    Toast.makeText(applicationContext, "Profile updated successfully", Toast.LENGTH_LONG).show()
-                    finish()
-                }.addOnFailureListener {
-                    Toast.makeText(applicationContext, "Profile update failed", Toast.LENGTH_LONG).show()
-                }
+            if (::imagePath.isInitialized) {
+
+                // TODO add progress bar
+                val progress: ProgressBar = ProgressBar(this)
+
+                val imageName = UUID.randomUUID().toString()
+                val ref = firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/" + imageName)
+                ref.putFile(imagePath)
+                    .addOnSuccessListener {
+                        Log.d("firebase", "image upload successful")
+                        val data = getNewProfileDatas(imageName)
+                        firebaseDatabase().collection("users")
+                            .document(firebaseAuth().currentUser!!.email + "")
+                            .set(data).addOnSuccessListener {
+                                refreshUserData(data)
+                                Toast.makeText(applicationContext, "Profile updated successfully", Toast.LENGTH_LONG).show()
+                                finish()
+                            }.addOnFailureListener {
+                                Toast.makeText(applicationContext, "Profile update failed", Toast.LENGTH_LONG).show()
+                            }
+                    }
+                    .addOnFailureListener {
+                        Log.d("firebase", "image upload unsuccessful")
+                    }
+            } else {
+                val data = getNewProfileDatas("")
+                firebaseDatabase().collection("users")
+                    .document(firebaseAuth().currentUser!!.email + "")
+                    .set(data).addOnSuccessListener {
+                        refreshUserData(data)
+                        Toast.makeText(applicationContext, "Profile updated successfully", Toast.LENGTH_LONG).show()
+                        finish()
+                    }.addOnFailureListener {
+                        Toast.makeText(applicationContext, "Profile update failed", Toast.LENGTH_LONG).show()
+                    }
+            }
         }
+    }
+
+    private fun initializeImageOnClick() {
+        imgProfile.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    pickImageFromGallery()
+                } else {
+                    // permission denied
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                    requestPermissions(permissions, PERMISSION_CODE)
+                }
+            } else {
+                // system os < marshmallow
+                pickImageFromGallery()
+            }
+        }
+    }
+
+    private fun pickImageFromGallery() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_PICK_CODE)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -134,5 +197,49 @@ class EditProfileActivity : AppCompatActivity() {
 
         initializeInitialValues()
         initializeCommitButton()
+        initializeImageOnClick()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSION_CODE -> {
+                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    pickImageFromGallery()
+                } else {
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+            imgProfile.setImageURI(data?.data)
+            imagePath = data?.data!!
+        }
+    }
+
+    private fun uploadImage(): String {
+        if (::imagePath.isInitialized) {
+            // TODO add progress bar
+            val progress: ProgressBar = ProgressBar(this)
+            val imageName = UUID.randomUUID().toString()
+            val ref = firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/" + imageName)
+            ref.putFile(imagePath)
+                .addOnSuccessListener {
+                    Log.d("firebase", "image upload successful")
+                }
+                .addOnFailureListener {
+                    Log.d("firebase", "image upload unsuccessful")
+                }
+            return imageName
+        }
+        return ""
     }
 }

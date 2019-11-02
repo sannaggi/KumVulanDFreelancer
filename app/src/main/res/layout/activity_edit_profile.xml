@@ -51,23 +51,14 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgProfile"
-                android:layout_width="113dp"
-                android:layout_height="113dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="12dp"
                 android:contentDescription="@string/profile_image"
                 android:cropToPadding="false"
                 android:fitsSystemWindows="false"
                 tools:src="@drawable/ddd" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/change_profile_photo"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:textColor="#3B70E7"
-                android:textSize="17sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
