@@ -1,6 +1,7 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -18,4 +19,8 @@ fun firebaseStorage(): FirebaseStorage {
 
 fun firebaseStorageReference(): StorageReference {
     return firebaseStorage().reference
+}
+
+fun firebaseUser(): FirebaseUser? {
+    return firebaseAuth().currentUser
 }

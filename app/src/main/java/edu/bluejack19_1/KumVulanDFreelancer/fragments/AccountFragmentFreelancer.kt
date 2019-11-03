@@ -1,30 +1,22 @@
 package edu.bluejack19_1.KumVulanDFreelancer.Fragments
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.marginLeft
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.flexbox.FlexboxLayout
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.storage.FirebaseStorage
-import com.squareup.picasso.Picasso
 import edu.bluejack19_1.KumVulanDFreelancer.*
 import edu.bluejack19_1.KumVulanDFreelancer.adapters.ReviewAdapter
-import kotlinx.android.synthetic.main.fragment_account.*
-import org.w3c.dom.Text
-import java.util.*
+import kotlinx.android.synthetic.main.fragment_account_freelancer.*
+import java.lang.Exception
 import kotlin.collections.ArrayList
 
-class AccountFragment(parent: MainActivity) : Fragment() {
+class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
 
     val parent = parent
 
@@ -33,7 +25,7 @@ class AccountFragment(parent: MainActivity) : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_account, container, false)
+        return inflater.inflate(R.layout.fragment_account_freelancer, container, false)
     }
 
     override fun onResume() {
@@ -60,18 +52,21 @@ class AccountFragment(parent: MainActivity) : Fragment() {
 
     private fun loadProfileImage() {
 
-        Log.d("firebase", User.getProfileImage())
-        firebaseStorageReference()
-            .child(User.getProfileImage())
-            .downloadUrl
-            .addOnSuccessListener{
-                uri -> Glide.with(this)
+        try {
+            firebaseStorageReference()
+                .child(User.getProfileImage())
+                .downloadUrl
+                .addOnSuccessListener{
+                        uri -> Glide.with(this)
                     .load(uri)
                     .into(profileImage)
-            }
-            .addOnFailureListener {
-                Log.d("firebase-error", it.toString())
-            }
+                }
+                .addOnFailureListener {
+                    Log.d("firebase", it.toString())
+                }
+        } catch (e: Exception) {
+            Log.d("firebase", "invalid image loading intercepted")
+        }
 //      uri -> Picasso.with(this.context).load(uri).into(profileImage)
     }
 

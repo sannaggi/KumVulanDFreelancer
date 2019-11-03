@@ -42,24 +42,28 @@ class EditProfileActivity : AppCompatActivity() {
         System.last_activity = System.EDIT_PROFILE_ACTIVITY
     }
 
+    private fun addNewSkill(string: String) {
+        var skill: LinearLayout = View.inflate(this, R.layout.profile_edit_skill, null) as LinearLayout
+
+        val params: FlexboxLayout.LayoutParams = FlexboxLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT)
+        params.setMargins(5, 10, 5, 10)
+        skill.layoutParams = params
+
+        skill.text.text = string
+        skill.btnRemove.setOnClickListener{
+            skillsList.remove(skill)
+            skillsContainer.removeView(skill)
+        }
+
+        skillsContainer.addView(skill)
+        skillsList.add(skill)
+    }
+
     private fun loadSkills() {
         val skills = User.getSkills()
 
         skills.forEach {
-            var skill: LinearLayout = View.inflate(this, R.layout.profile_edit_skill, null) as LinearLayout
-
-            val params: FlexboxLayout.LayoutParams = FlexboxLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT)
-            params.setMargins(5, 10, 5, 10)
-            skill.layoutParams = params
-
-            skill.text.text = it
-            skill.btnRemove.setOnClickListener{
-                skillsList.remove(skill)
-                skillsContainer.removeView(skill)
-            }
-
-            skillsContainer.addView(skill)
-            skillsList.add(skill)
+            addNewSkill(it)
         }
     }
 
@@ -191,6 +195,15 @@ class EditProfileActivity : AppCompatActivity() {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_PICK_CODE)
     }
 
+    private fun initializeAddSkillButton() {
+        btnAddSkill.setOnClickListener {
+            if(txtSkill.text.toString().isNotEmpty()) {
+                addNewSkill(txtSkill.text.toString())
+                txtSkill.setText("")
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -198,6 +211,7 @@ class EditProfileActivity : AppCompatActivity() {
         initializeInitialValues()
         initializeCommitButton()
         initializeImageOnClick()
+        initializeAddSkillButton()
     }
 
     override fun onRequestPermissionsResult(
@@ -223,23 +237,5 @@ class EditProfileActivity : AppCompatActivity() {
             imgProfile.setImageURI(data?.data)
             imagePath = data?.data!!
         }
-    }
-
-    private fun uploadImage(): String {
-        if (::imagePath.isInitialized) {
-            // TODO add progress bar
-            val progress: ProgressBar = ProgressBar(this)
-            val imageName = UUID.randomUUID().toString()
-            val ref = firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/" + imageName)
-            ref.putFile(imagePath)
-                .addOnSuccessListener {
-                    Log.d("firebase", "image upload successful")
-                }
-                .addOnFailureListener {
-                    Log.d("firebase", "image upload unsuccessful")
-                }
-            return imageName
-        }
-        return ""
     }
 }

@@ -63,7 +63,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/name"/>
 
             <EditText
@@ -89,6 +89,30 @@
                 app:flexWrap="wrap">
 
             </com.google.android.flexbox.FlexboxLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:hint="@string/add_new_skill"
+                    android:layout_weight="0.78"
+                    android:id="@+id/txtSkill"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/blue_green_gradient"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="#ffffff"
+                    android:text="ADD"
+                    android:layout_weight="0.22"
+                    android:id="@+id/btnAddSkill"/>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

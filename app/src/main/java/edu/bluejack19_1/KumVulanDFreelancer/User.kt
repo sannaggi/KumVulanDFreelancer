@@ -17,6 +17,10 @@ class User {
         val SKILLS = "skills"
         val ABOUT = "about"
         val PROFILE_IMAGE_DIR = "/profile_images"
+        val ROLE = "role"
+        val FREELANCER = "Freelancer"
+        val CLIENT = "Client"
+        val DEFAULT_PROFILE_IMAGE = "default_profile.png"
 
         fun getProfileImage(): String {
             return "${PROFILE_IMAGE_DIR}/${getProfileImageName()}"
@@ -52,6 +56,10 @@ class User {
 
         fun getReviews(): ArrayList<Map<String, Any>> {
             return data?.get(REVIEWS) as ArrayList<Map<String, Any>>
+        }
+
+        fun getRole(): String {
+            return data?.get(ROLE).toString()
         }
 
     }
