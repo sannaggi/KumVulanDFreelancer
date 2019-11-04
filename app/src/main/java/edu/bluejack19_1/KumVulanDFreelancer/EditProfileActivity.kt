@@ -119,6 +119,7 @@ class EditProfileActivity : AppCompatActivity() {
         data[User.JOBS_DONE] = User.getJobsDone()
         data[User.RATING] = User.getRating().toDouble()
         data[User.REVIEWS] = User.getReviews()
+        data[User.ROLE] = User.getRole()
 
         return data
     }
@@ -133,7 +134,13 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun initializeCommitButton() {
         btnCommit.setOnClickListener {
-            if (::imagePath.isInitialized) {
+            if (txtAbout.text.isEmpty() || txtAcademic.text.isEmpty() || txtName.text.isEmpty()) {
+                when {
+                    txtAbout.text.isEmpty() -> Toast.makeText(this, "About cannot be empty", Toast.LENGTH_LONG).show()
+                    txtAcademic.text.isEmpty() -> Toast.makeText(this, "Academic record cannot be empty", Toast.LENGTH_LONG).show()
+                    txtName.text.isEmpty() -> Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_LONG).show()
+                }
+            } else if (::imagePath.isInitialized) {
 
                 // TODO add progress bar
                 val progress: ProgressBar = ProgressBar(this)

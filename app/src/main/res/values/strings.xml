@@ -32,6 +32,7 @@
     <string name="tell_us_your_name">Tell us your name</string>
     <string name="my_name_is">My name is</string>
     <string name="submit">Submit</string>
+    <string name="register_as_freelancer">Register as freelancer</string>
 
     <string-array name="role_array">
         <item>Client</item>

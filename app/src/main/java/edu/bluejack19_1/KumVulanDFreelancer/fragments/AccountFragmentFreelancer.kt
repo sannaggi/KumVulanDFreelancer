@@ -114,6 +114,20 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
 
     private fun loadReview() {
         val reviews = User.getReviews()
+
+        if (reviews.isEmpty()) {
+            hideReviews()
+            return
+        }
+        populateSkillsContainer(reviews)
+
+    }
+
+    private fun hideReviews() {
+        listReview.visibility = View.GONE
+    }
+
+    private fun populateSkillsContainer(reviews: ArrayList<Map<String, Any>>) {
         val adapter = ReviewAdapter(this.context!!, getReviewArrayList(reviews))
         listReview.adapter = adapter
 

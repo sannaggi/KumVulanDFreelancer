@@ -12,5 +12,6 @@ class System {
         val ACCOUNT_FRAGMENT_GUEST = "accountFragmentGuest"
         val EDIT_PROFILE_ACTIVITY = "editProfileActivity"
         val REGISTER_CLIENT_ACTIVITY = "registerClientActivity"
+        val REGISTER_FREELANCER_ACTIVITY = "registerFreelancerActivity"
     }
 }
