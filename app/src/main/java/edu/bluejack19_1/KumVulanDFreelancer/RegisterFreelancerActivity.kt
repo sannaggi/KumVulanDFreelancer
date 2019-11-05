@@ -214,19 +214,16 @@ class RegisterFreelancerActivity : AppCompatActivity() {
     }
 
     private fun loadProfileImage() {
-
-        try {
-            firebaseStorageReference()
-                .child(User.getProfileImage())
-                .downloadUrl
-                .addOnSuccessListener{
-                        uri -> Glide.with(this)
-                    .load(uri)
-                    .into(imgProfile)
+        firebaseStorageReference()
+            .child(User.getProfileImage())
+            .downloadUrl
+            .addOnSuccessListener{ uri ->
+                if (imgProfile != null) {
+                    Glide.with(this)
+                        .load(uri)
+                        .into(imgProfile)
                 }
-        } catch (e: Exception) {
-            Log.d("firebase", "invalid image loading intercepted")
-        }
+            }
     }
 
     private fun loadAbout() {
