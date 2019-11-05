@@ -8,6 +8,8 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import com.facebook.FacebookSdk
+import com.facebook.appevents.AppEventsLogger
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -20,9 +22,22 @@ import com.google.firebase.auth.GoogleAuthProvider
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragment
 import kotlinx.android.synthetic.main.activity_login_register.*
 
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
+import com.facebook.FacebookCallback
+import com.facebook.login.LoginManager
+import com.facebook.CallbackManager
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import java.util.*
+import kotlin.collections.HashMap
+
+
 class LoginRegisterActivity : AppCompatActivity() {
 
     private val RC_SIGN_IN = 9001
+    var callbackManager : CallbackManager? = null;
 
     private fun getGoogleSignInClient() : GoogleSignInClient {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -35,12 +50,37 @@ class LoginRegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login_register)
+        setContentView(R.layout.activity_login_register);
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(application);
 
         googleLoginBtn.setOnClickListener{
             val signInIntent = getGoogleSignInClient().signInIntent;
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
+
+        facebookLoginBtn.setOnClickListener(View.OnClickListener {
+
+//            startAFR
+            callbackManager = CallbackManager.Factory.create()
+//            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"));
+            LoginManager.getInstance().registerCallback(callbackManager,
+                    object : FacebookCallback<LoginResult> {
+                        override fun onSuccess(loginResult: LoginResult) {
+                            Log.d("LoginRegisterActivity", "Token: " + loginResult.accessToken.token);
+//                            startActivity(applicationContext, )
+                            System.last_activity = System.LOGIN_REGISTER_ACTIVITY;
+                        }
+
+                        override fun onCancel() {
+                            // App code
+                        }
+
+                        override fun onError(exception: FacebookException) {
+                            // App code
+                        }
+                    })
+        })
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -57,6 +97,9 @@ class LoginRegisterActivity : AppCompatActivity() {
                 Log.w("firebase", "Google sign in failed", e)
                 // ...
             }
+        }
+        else{
+            callbackManager?.onActivityResult(requestCode, resultCode, data);
         }
     }
 

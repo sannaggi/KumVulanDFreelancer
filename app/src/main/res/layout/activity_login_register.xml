@@ -14,4 +14,10 @@
 
     </com.google.android.gms.common.SignInButton>
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebookLoginBtn"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content">
+
+    </com.facebook.login.widget.LoginButton>
 </LinearLayout>
