@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.TextView
+import android.widget.LinearLayout
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import edu.bluejack19_1.KumVulanDFreelancer.*
 import kotlinx.android.synthetic.main.taken_job.view.*
-import java.lang.Exception
 
 class TakenJobAdapter(private val context: Context, private val jobs: List<TakenJob>): BaseAdapter(){
 
@@ -33,14 +31,51 @@ class TakenJobAdapter(private val context: Context, private val jobs: List<Taken
         val row = inflater.inflate(R.layout.taken_job, parent, false)
         val job = getItem(position) as TakenJob
 
-        row.txtJobName.text = job.name
-        row.txtDeadline.text = job.deadline
-        row.txtStatus.text = job.status
+        loadValues(row, job)
 
         row.btnFinishJob.setOnClickListener {
 
         }
 
         return row
+    }
+
+    private fun loadValues(row: View, job: TakenJob) {
+        row.txtJobName.text = job.name
+        row.txtDeadline.text = job.deadline
+        row.txtStatus.text = job.status
+
+        loadOtherPartyDatas(row, job)
+    }
+
+    private fun loadOtherPartyDatas(row: View, job: TakenJob) {
+        firebaseDatabase()
+            .collection("users")
+            .document(job.client)
+            .get()
+            .addOnSuccessListener {
+                if (row.txtOtherParty != null) {
+                    val data = it.data as HashMap<String, Any>
+                    row.txtOtherParty.text = data.get(User.NAME).toString()
+
+                    loadImage(data.get(User.PROFILE_IMAGE).toString(), row)
+                }
+            }
+    }
+
+    private fun loadImage(imagePath: String, row: View) {
+        firebaseStorageReference()
+            .child(User.getProfileImagePath(imagePath))
+            .downloadUrl
+            .addOnSuccessListener{uri ->
+                if (row.imgOtherParty != null) {
+                    Glide.with(this.context)
+                        .load(uri)
+                        .into(row.imgOtherParty)
+                }
+            }
+            .addOnFailureListener {
+                Log.d("firebase", it.toString())
+            }
     }
 }

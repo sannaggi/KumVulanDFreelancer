@@ -62,6 +62,8 @@ class HomeFragment(main: MainActivity): Fragment() {
     }
 
     private fun updateJobsUI(jobs: ArrayList<HashMap<String, Any>>) {
+        if (jobsContainer == null) return
+
         jobsContainer.removeView(progress_circular)
         if (jobs.isEmpty()) {
             emptyJobMessageContainer.visibility = View.VISIBLE

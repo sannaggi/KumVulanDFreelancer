@@ -36,7 +36,7 @@
     <string name="loading">Loading...</string>
     <string name="search_for_job">Search for job</string>
     <string name="you_have_no_active_job">You have no on going job!</string>
-    <string name="your_active_job">Your active job(s)</string>
+    <string name="your_active_job">Your taken job(s)</string>
     <string name="other_party">Other party</string>
     <string name="deadline">Deadline</string>
     <string name="finish_job">Finish job</string>
