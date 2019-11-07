@@ -9,6 +9,7 @@ import android.widget.BaseAdapter
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import edu.bluejack19_1.KumVulanDFreelancer.*
+import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragment
 import kotlinx.android.synthetic.main.taken_job.view.*
 
 class TakenJobAdapter(private val context: Context, private val jobs: List<TakenJob>): BaseAdapter(){
@@ -33,6 +34,10 @@ class TakenJobAdapter(private val context: Context, private val jobs: List<Taken
 
         loadValues(row, job)
 
+        row.setOnClickListener {
+
+        }
+
         row.btnFinishJob.setOnClickListener {
 
         }
@@ -49,9 +54,10 @@ class TakenJobAdapter(private val context: Context, private val jobs: List<Taken
     }
 
     private fun loadOtherPartyDatas(row: View, job: TakenJob) {
+        val otherParty = if (HomeFragment.role == "freelancer") job.client else job.freelancer
         firebaseDatabase()
             .collection("users")
-            .document(job.client)
+            .document(otherParty)
             .get()
             .addOnSuccessListener {
                 if (row.txtOtherParty != null) {

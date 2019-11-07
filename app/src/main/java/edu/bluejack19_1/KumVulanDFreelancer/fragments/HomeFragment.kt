@@ -6,6 +6,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.LinearLayout
@@ -15,8 +17,12 @@ import edu.bluejack19_1.KumVulanDFreelancer.adapters.TakenJobAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.redirect_to_jobs_button.view.*
 
-class HomeFragment(main: MainActivity): Fragment() {
+class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
     val main = main
+
+    companion object {
+        var role: String = "client"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,40 +37,33 @@ class HomeFragment(main: MainActivity): Fragment() {
 
         initializeSpinner()
         initializeRedirectButton()
-        fetchData()
+//        fetchData()
     }
 
     private fun fetchData() {
-        val jobs = ArrayList<HashMap<String, Any>>()
+        Log.d("firebase", role)
 
-        if (User.getRole() == User.FREELANCER) {
-            firebaseDatabase()
-                .collection("jobs")
-                .whereEqualTo("client", firebaseAuth().currentUser!!.email)
-                .get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        jobs.add(document.data as HashMap<String, Any>)
-                    }
-                    firebaseDatabase()
-                        .collection("jobs")
-                        .whereEqualTo("freelancer", firebaseAuth().currentUser!!.email)
-                        .get()
-                        .addOnSuccessListener { documents ->
-                            for (document in documents) {
-                                jobs.add(document.data as HashMap<String, Any>)
-                            }
-                            Log.d("firebase", jobs.toString())
-                            updateJobsUI(jobs)
-                        }
+        emptyJobMessageContainer.visibility = View.GONE
+        progress_circular.visibility = View.VISIBLE
+        onGoingJobsContainer.visibility = View.GONE
+        val jobs = ArrayList<HashMap<String, Any>>()
+        firebaseDatabase()
+            .collection("jobs")
+            .whereEqualTo(role, firebaseAuth().currentUser!!.email)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    jobs.add(document.data as HashMap<String, Any>)
                 }
-        }
+                Log.d("firebase", jobs.toString())
+                updateJobsUI(jobs)
+            }
     }
 
     private fun updateJobsUI(jobs: ArrayList<HashMap<String, Any>>) {
         if (jobsContainer == null) return
 
-        jobsContainer.removeView(progress_circular)
+        progress_circular.visibility = View.GONE
         if (jobs.isEmpty()) {
             emptyJobMessageContainer.visibility = View.VISIBLE
             return
@@ -108,6 +107,11 @@ class HomeFragment(main: MainActivity): Fragment() {
     }
 
     private fun initializeSpinner() {
+        if (User.getRole() == User.CLIENT) {
+            spinnerRole.visibility = View.GONE
+            return
+        }
+
         ArrayAdapter.createFromResource(
             this.context!!,
             R.array.role_array,
@@ -121,6 +125,17 @@ class HomeFragment(main: MainActivity): Fragment() {
         if (User.getRole() == User.FREELANCER) {
             spinnerRole.setSelection(1)
         }
+
+        spinnerRole.onItemSelectedListener = this
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        role = if (position == 0) "client" else "freelancer"
+        fetchData()
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+
     }
 
     private fun initializeRedirectButton() {

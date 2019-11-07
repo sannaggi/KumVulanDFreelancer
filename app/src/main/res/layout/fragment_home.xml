@@ -124,7 +124,7 @@
                     android:id="@+id/listTakenJobs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:dividerHeight="10dp"/>
+                    android:dividerHeight="15dp"/>
 
             </LinearLayout>
 
