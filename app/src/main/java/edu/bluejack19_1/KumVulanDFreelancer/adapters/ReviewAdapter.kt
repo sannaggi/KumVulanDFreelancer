@@ -14,8 +14,9 @@ import edu.bluejack19_1.KumVulanDFreelancer.R
 import edu.bluejack19_1.KumVulanDFreelancer.Review
 import edu.bluejack19_1.KumVulanDFreelancer.User
 import edu.bluejack19_1.KumVulanDFreelancer.firebaseStorageReference
-import kotlinx.android.synthetic.main.fragment_account.*
+import kotlinx.android.synthetic.main.fragment_account_freelancer.*
 import org.w3c.dom.Text
+import java.lang.Exception
 
 class ReviewAdapter(private val context: Context, private val reviews: List<Review>): BaseAdapter(){
 
@@ -43,12 +44,18 @@ class ReviewAdapter(private val context: Context, private val reviews: List<Revi
 
         val review = getItem(position) as Review
 
-        firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/${review.profile_image}").downloadUrl.addOnSuccessListener{
-                uri -> Glide.with(context)
-            .load(uri)
-            .thumbnail(0.25f)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(imgProfile)
+        try {
+            firebaseStorageReference()
+                .child("${User.PROFILE_IMAGE_DIR}/${review.profile_image}")
+                .downloadUrl.addOnSuccessListener{
+                    uri -> Glide.with(context)
+                .load(uri)
+                .thumbnail(0.25f)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(imgProfile)
+            }
+        } catch (e: Exception) {
+            Log.d("firebase", "invalid image loading intercepted")
         }
         txtName.text = review.name
         txtRating.text = "${review.rating} ★"

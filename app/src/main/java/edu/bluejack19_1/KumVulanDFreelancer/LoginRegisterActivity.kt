@@ -1,7 +1,6 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,16 +9,14 @@ import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
+import androidx.appcompat.app.AlertDialog
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragment
 import kotlinx.android.synthetic.main.activity_login_register.*
 
 import com.facebook.FacebookException
@@ -111,38 +108,33 @@ class LoginRegisterActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d("firebase", "signInWithCredential:success")
-                    val user = firebaseAuth().currentUser
-                    Log.d("firebase", user.toString())
-
                     val currentUser = firebaseAuth().currentUser
+                    Log.d("firebase", currentUser.toString())
 
-                    if(user != null) {
-                        firebaseDatabase().collection("users")
-                            .document(currentUser!!.email + "")
-                            .get().addOnSuccessListener {
+                    firebaseDatabase().collection("users")
+                        .document(currentUser!!.email + "")
+                        .get().addOnSuccessListener {
+                            if (it.data != null) {
                                 User.data = it.data as HashMap<String, Any>
                                 Log.d("firebase", "curr user initiated: ${it.data.toString()}")
-                            }.addOnSuccessListener {
-//                                MainActivity.instance.login()
                                 finish()
                                 System.last_activity = System.LOGIN_REGISTER_ACTIVITY
+                            } else {
+                                val builder = AlertDialog.Builder(this)
+                                builder.setTitle("New User")
+                                builder.setMessage("Your email hasn't been registered yet! Do you want to register?")
+                                    .setCancelable(true)
+                                    .setPositiveButton("YES") { dialog, which ->
+                                        val intent = Intent(this, RegisterClientActivity::class.java)
+                                        startActivity(intent)
+                                        System.last_activity = System.LOGIN_REGISTER_ACTIVITY
+                                        finish()
+                                    }
+                                    .setNegativeButton("NO"){dialog, which ->  }
+                                builder.create().show()
                             }
-
-                    } else {
-                        // create new user
-
-                    }
-
-
-                    // update ui
-                } else {
-                    Log.w("firebase", "signInWithCredential:failure", task.exception)
-
-//                    Snackbar.make(View, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
-                    // update ui
+                        }
                 }
-
-                // ...
             }
     }
 
