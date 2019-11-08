@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var jobsFragment: JobsFragment
     private lateinit var accountFragment: Fragment
 
+    fun jumpToJobsFragment() {
+        addFragment(jobsFragment)
+    }
+
     fun logout() {
         accountFragment = AccountFragmentGuest(this)
         homeFragment = HomeFragmentGuest(this)

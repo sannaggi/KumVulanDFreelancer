@@ -26,6 +26,10 @@ class User {
             return "${PROFILE_IMAGE_DIR}/${getProfileImageName()}"
         }
 
+        fun getProfileImagePath(path: String): String {
+            return "${PROFILE_IMAGE_DIR}/${path}"
+        }
+
         fun getProfileImageName(): String {
             return data?.get(PROFILE_IMAGE).toString()
         }

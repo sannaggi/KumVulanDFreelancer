@@ -68,12 +68,16 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun loadProfileImage() {
-        firebaseStorageReference().child(User.getProfileImage()).downloadUrl.addOnSuccessListener{
-                uri -> Glide.with(this)
-            .load(uri)
-            .thumbnail(0.25f)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(imgProfile)
+        firebaseStorageReference().child(User.getProfileImage())
+            .downloadUrl
+            .addOnSuccessListener{ uri ->
+                if (imgProfile != null) {
+                    Glide.with(this)
+                        .load(uri)
+                        .thumbnail(0.25f)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(imgProfile)
+                }
         }
     }
 

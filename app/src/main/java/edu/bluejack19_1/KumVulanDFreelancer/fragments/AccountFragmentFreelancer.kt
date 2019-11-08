@@ -56,10 +56,12 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
             firebaseStorageReference()
                 .child(User.getProfileImage())
                 .downloadUrl
-                .addOnSuccessListener{
-                        uri -> Glide.with(this)
-                    .load(uri)
-                    .into(profileImage)
+                .addOnSuccessListener{uri ->
+                    if (profileImage != null) {
+                        Glide.with(this)
+                            .load(uri)
+                            .into(profileImage)
+                    }
                 }
                 .addOnFailureListener {
                     Log.d("firebase", it.toString())
@@ -124,6 +126,7 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
     }
 
     private fun hideReviews() {
+        txtReview.visibility = View.GONE
         listReview.visibility = View.GONE
     }
 

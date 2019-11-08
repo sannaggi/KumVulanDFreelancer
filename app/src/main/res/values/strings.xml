@@ -35,6 +35,15 @@
     <string name="my_name_is">My name is</string>
     <string name="submit">Submit</string>
     <string name="register_as_freelancer">Register as freelancer</string>
+    <string name="loading">Loading...</string>
+    <string name="search_for_job">Search for job</string>
+    <string name="you_have_no_active_job">You have no on going job!</string>
+    <string name="your_active_job">Your taken job(s)</string>
+    <string name="other_party">Other party</string>
+    <string name="deadline">Deadline</string>
+    <string name="finish_job">Finish job</string>
+    <string name="status">Status</string>
+    <string name="on_going">On going</string>
 
     <string-array name="role_array">
         <item>Client</item>
