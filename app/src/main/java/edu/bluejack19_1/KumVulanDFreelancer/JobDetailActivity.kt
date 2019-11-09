@@ -1,5 +1,6 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,8 +8,11 @@ import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
+import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragment
 import kotlinx.android.synthetic.main.activity_job_detail.*
 import kotlinx.android.synthetic.main.fragment_account_freelancer.*
 
@@ -48,10 +52,136 @@ class JobDetailActivity : AppCompatActivity() {
                     .get()
                     .addOnSuccessListener { it2 ->
                         otherPartyData = it2.data as HashMap<String, Any>
-
-                        showDatas()
+                        launchActivity()
                     }
             }
+    }
+
+    private fun launchActivity() {
+        showDatas()
+        initializeFinishButton()
+    }
+
+    private fun initializeFinishButton() {
+        if (HomeFragment.role == TakenJob.CLIENT && data.get(TakenJob.STATUS).toString() == TakenJob.WAITING_FREELANCER) {
+            disableButton()
+            return
+        }
+
+        if (HomeFragment.role == TakenJob.FREELANCER && data.get(TakenJob.STATUS).toString() == TakenJob.WAITING_CLIENT) {
+            disableButton()
+            return
+        }
+
+        btnFinish.setOnClickListener {
+            confirmationPopupFinish()
+        }
+
+        btnCancel.setOnClickListener {
+            confirmationPopupCancel()
+        }
+    }
+
+    private fun confirmationPopupFinish() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirmation")
+        builder.setMessage("Do you really want to finish this job?")
+            .setCancelable(true)
+            .setPositiveButton("YES") { dialog, which ->
+                updateJobStatus()
+            }
+            .setNegativeButton("NO"){dialog, which ->  }
+        builder.create().show()
+    }
+
+    private fun confirmationPopupCancel() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Confirmation")
+        builder.setMessage("Do you really want to cancel this job?")
+            .setCancelable(true)
+            .setPositiveButton("YES") { dialog, which ->
+                cancelJob()
+            }
+            .setNegativeButton("NO"){dialog, which ->  }
+        builder.create().show()
+    }
+
+    private fun cancelJob() {
+        data.set(TakenJob.STATUS, "Canceled")
+
+        firebaseDatabase()
+            .collection("jobs")
+            .document(jobID)
+            .delete()
+
+        firebaseDatabase()
+            .collection("finished_jobs")
+            .document(jobID)
+            .set(data)
+
+        finish()
+    }
+
+    private fun updateJobStatus() {
+        lateinit var newStatus: String
+
+        if (role == TakenJob.CLIENT) {
+            when (data.get(TakenJob.STATUS).toString()) {
+                TakenJob.ON_GOING -> {
+                    newStatus = TakenJob.WAITING_FREELANCER
+                }
+                TakenJob.WAITING_CLIENT -> {
+                    newStatus = TakenJob.FINISHED
+                }
+            }
+        } else {
+            when (data.get(TakenJob.STATUS).toString()) {
+                TakenJob.ON_GOING -> {
+                    newStatus = TakenJob.WAITING_CLIENT
+                }
+                TakenJob.WAITING_FREELANCER -> {
+                    newStatus = TakenJob.FINISHED
+                }
+            }
+        }
+
+        data.set(TakenJob.STATUS, newStatus)
+
+        if (newStatus == TakenJob.FINISHED) {
+            finishJob()
+            finish()
+        } else {
+            updateData()
+        }
+        txtStatus.text = newStatus
+        txtStatus.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        disableButton()
+    }
+
+    private fun updateData() {
+        firebaseDatabase()
+            .collection("jobs")
+            .document(jobID)
+            .update(data)
+    }
+
+    private fun finishJob() {
+        firebaseDatabase()
+            .collection("jobs")
+            .document(jobID)
+            .delete()
+
+        firebaseDatabase()
+            .collection("finished_jobs")
+            .document(jobID)
+            .set(data)
+    }
+
+    private fun disableButton() {
+        txtStatus.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary))
+        btnFinish.isEnabled = false
+        btnFinish.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+        btnFinish.text = getString(R.string.waiting_confirmation)
     }
 
     private fun showDatas() {
@@ -69,6 +199,7 @@ class JobDetailActivity : AppCompatActivity() {
         txtPrice.text = "Rp. ${data.get(TakenJob.EST_PRICE).toString()}"
         txtDeadline.text = data.get(TakenJob.DEADLINE).toString()
         txtDescription.text = data.get(TakenJob.DESCRIPTION).toString()
+        txtStatus.text = data.get(TakenJob.STATUS).toString()
 
         loadUserDatas()
     }

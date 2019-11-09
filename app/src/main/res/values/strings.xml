@@ -48,6 +48,7 @@
     <string name="client">Client</string>
     <string name="price">Price</string>
     <string name="issue_new_job">Issue new job +</string>
+    <string name="waiting_confirmation">Waiting confirmation</string>
 
     <string-array name="role_array">
         <item>Client</item>

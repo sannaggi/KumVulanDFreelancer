@@ -7,5 +7,6 @@
     <color name="brownishOrange">#ffb578</color>
     <color name="darkBrownishOrange">#FC9550</color>
     <color name="black">#000000</color>
+    <color name="gray">#929292</color>
 <!--    <color name="colorAccent">#D81B60</color>-->
 </resources>

@@ -146,53 +146,80 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:weightSum="3"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.95"
                     android:orientation="vertical"
                     android:paddingStart="10dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:text="@string/price"/>
 
                     <TextView
                         android:id="@+id/txtPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="17sp"
-                        tools:text="Rp. 1000000" />
+                        android:textSize="16sp"
+                        tools:text="Rp. 1000000"
+                        android:maxLines="1"
+                        android:ellipsize="end"/>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.95"
                     android:orientation="vertical"
                     android:paddingStart="10dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:text="@string/deadline"/>
 
                     <TextView
                         android:id="@+id/txtDeadline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="17sp"
-                        tools:text="11/10/2019" />
+                        android:textSize="16sp"
+                        tools:text="11/10/2019"
+                        android:maxLines="1"
+                        android:ellipsize="end"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.1"
+                    android:orientation="vertical"
+                    android:paddingStart="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="16sp"
+                        tools:text="Waiting freelancer"
+                        android:textColor="@color/colorBlue"/>
 
                 </LinearLayout>
 
@@ -230,7 +257,7 @@
                         android:background="#DB1414"
                         android:text="@string/cancel_job"
                         android:textColor="@android:color/background_light"
-                        android:textSize="18sp"
+                        android:textSize="17sp"
                         android:textStyle="bold"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="10dp"/>
@@ -239,11 +266,11 @@
                         android:id="@+id/btnFinish"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:background="@color/colorPrimary"
                         android:text="@string/finish_job"
                         android:textColor="@android:color/background_light"
-                        android:textSize="18sp"
+                        android:textSize="17sp"
                         android:textStyle="bold"
                         android:layout_marginTop="20dp"/>
 
