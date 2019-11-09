@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterFreelancerActivity"></activity>
+        <activity android:name=".JobDetailActivity"></activity>
+        <activity android:name=".RegisterFreelancerActivity" />
         <activity android:name=".RegisterClientActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>

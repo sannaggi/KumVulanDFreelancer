@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     fun jumpToJobsFragment() {
         addFragment(jobsFragment)
+        bottom_navigation.selectedItemId = R.id.nav_jobs
     }
 
     fun logout() {

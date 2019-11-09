@@ -21,7 +21,7 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
     val main = main
 
     companion object {
-        var role: String = "client"
+        var role: String = TakenJob.CLIENT
     }
 
     override fun onCreateView(
@@ -37,7 +37,6 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
 
         initializeSpinner()
         initializeRedirectButton()
-//        fetchData()
     }
 
     private fun fetchData() {
@@ -46,6 +45,8 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
         emptyJobMessageContainer.visibility = View.GONE
         progress_circular.visibility = View.VISIBLE
         onGoingJobsContainer.visibility = View.GONE
+        btnNewJob.visibility = View.GONE
+
         val jobs = ArrayList<HashMap<String, Any>>()
         firebaseDatabase()
             .collection("jobs")
@@ -53,19 +54,25 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    jobs.add(document.data as HashMap<String, Any>)
+                    val data = document.data as HashMap<String, Any>
+                    data.set("id", document.id)
+                    jobs.add(data)
                 }
                 Log.d("firebase", jobs.toString())
-                updateJobsUI(jobs)
+                updateJobsUI(jobs, role)
             }
     }
 
-    private fun updateJobsUI(jobs: ArrayList<HashMap<String, Any>>) {
+    private fun updateJobsUI(jobs: ArrayList<HashMap<String, Any>>, role: String) {
         if (jobsContainer == null) return
 
         progress_circular.visibility = View.GONE
         if (jobs.isEmpty()) {
-            emptyJobMessageContainer.visibility = View.VISIBLE
+            if (role == TakenJob.FREELANCER)
+                emptyJobMessageContainer.visibility = View.VISIBLE
+            else
+                btnNewJob.visibility = View.VISIBLE
+
             return
         }
 
@@ -99,8 +106,9 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
             val est_price = list[i].get(TakenJob.EST_PRICE).toString().toInt()
             val freelancer = list[i].get(TakenJob.FREELANCER).toString()
             val status = list[i].get(TakenJob.STATUS).toString()
+            val id = list[i].get(TakenJob.ID).toString()
 
-            jobs.add(TakenJob(name, client, deadline, description, est_price, freelancer, status))
+            jobs.add(TakenJob(name, client, deadline, description, est_price, freelancer, status, id))
         }
 
         return jobs
@@ -130,7 +138,7 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        role = if (position == 0) "client" else "freelancer"
+        role = if (position == 0) TakenJob.CLIENT else TakenJob.FREELANCER
         fetchData()
     }
 
