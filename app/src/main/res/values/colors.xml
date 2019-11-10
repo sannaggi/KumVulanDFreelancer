@@ -5,6 +5,8 @@
     <color name="colorAccent">#008577</color>
     <color name="colorBlue">#3F51B5</color>
     <color name="brownishOrange">#ffb578</color>
+    <color name="darkBrownishOrange">#FC9550</color>
     <color name="black">#000000</color>
+    <color name="gray">#929292</color>
 <!--    <color name="colorAccent">#D81B60</color>-->
 </resources>

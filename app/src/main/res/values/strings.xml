@@ -42,12 +42,18 @@
     <string name="other_party">Other party</string>
     <string name="deadline">Deadline</string>
     <string name="finish_job">Finish job</string>
+    <string name="cancel_job">Cancel job</string>
     <string name="status">Status</string>
     <string name="on_going">On going</string>
+    <string name="description">Description</string>
+    <string name="freelancer">Freelancer</string>
+    <string name="client">Client</string>
+    <string name="price">Price</string>
+    <string name="issue_new_job">Issue new job +</string>
+    <string name="waiting_confirmation">Waiting confirmation</string>
 
     <string-array name="role_array">
         <item>Client</item>
         <item>Freelancer</item>
     </string-array>
->>>>>>> 77c29560522e6c4ba4f7f5376ecd8ff0f8dd4eb3
 </resources>
