@@ -27,6 +27,8 @@
     <string name="academic_record_e">Academic record</string>
     <string name="skills_e">Skills</string>
     <string name="save_changes">Save changes</string>
+    <string name="facebook_app_id">2389339031320860</string>
+    <string name="fb_login_protocol_scheme">fb2389339031320860</string>
     <string name="add_new_skill">Add new skill</string>
     <string name="create_new_user">Create new user</string>
     <string name="tell_us_your_name">Tell us your name</string>
