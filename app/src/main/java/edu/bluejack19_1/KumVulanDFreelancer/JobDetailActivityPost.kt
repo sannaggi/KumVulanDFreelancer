@@ -1,22 +1,18 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragment
-import kotlinx.android.synthetic.main.activity_job_detail.*
-import kotlinx.android.synthetic.main.fragment_account_freelancer.*
+import kotlinx.android.synthetic.main.activity_job_detail_post.*
 
-class JobDetailActivity : AppCompatActivity() {
+class JobDetailActivityPost : AppCompatActivity() {
 
     lateinit var jobID: String
     lateinit var otherPartyEmail: String
@@ -26,7 +22,7 @@ class JobDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_job_detail)
+        setContentView(R.layout.activity_job_detail_post)
 
         fetchIntentData()
         getJobData()
@@ -87,10 +83,10 @@ class JobDetailActivity : AppCompatActivity() {
         builder.setTitle("Confirmation")
         builder.setMessage("Do you really want to finish this job?")
             .setCancelable(true)
-            .setPositiveButton("YES") { dialog, which ->
+            .setPositiveButton("YES") { _, _ ->
                 updateJobStatus()
             }
-            .setNegativeButton("NO"){dialog, which ->  }
+            .setNegativeButton("NO"){_, _ ->  }
         builder.create().show()
     }
 
@@ -99,10 +95,10 @@ class JobDetailActivity : AppCompatActivity() {
         builder.setTitle("Confirmation")
         builder.setMessage("Do you really want to cancel this job?")
             .setCancelable(true)
-            .setPositiveButton("YES") { dialog, which ->
+            .setPositiveButton("YES") { _, _ ->
                 cancelJob()
             }
-            .setNegativeButton("NO"){dialog, which ->  }
+            .setNegativeButton("NO"){_, _ ->  }
         builder.create().show()
     }
 

@@ -11,9 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+        android:layout_gravity="center">
 
         <LinearLayout
+            android:visibility="visible"
             android:id="@+id/progress_circular"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -36,7 +37,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="265dp"
+                android:layout_height="245dp"
                 android:background="@drawable/account_background"
                 android:orientation="vertical">
 
@@ -53,13 +54,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:orientation="vertical"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp">
@@ -79,59 +78,15 @@
                             android:id="@+id/txtClientName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="name"
+                            android:text="@string/loading"
                             android:textAlignment="center"
                             android:textColor="#ffffff"
-                            android:textSize="17sp"/>
+                            android:textSize="17sp" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/client"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff"
-                            android:textSize="14sp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="1dp"
-                        android:layout_height="180dp"
-                        android:background="#ffffff"
-                        android:layout_gravity="center_vertical"/>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/imgFreelancer"
-                            android:layout_width="90dp"
-                            android:layout_height="90dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="35dp"
-                            android:contentDescription="@string/profile_image"
-                            android:cropToPadding="false"
-                            android:fitsSystemWindows="false"
-                            tools:src="@drawable/ddd" />
-
-                        <TextView
-                            android:id="@+id/txtFreelancerName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="name"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff"
-                            android:textSize="17sp"/>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/freelancer"
                             android:textAlignment="center"
                             android:textColor="#ffffff"
                             android:textSize="14sp"/>
@@ -146,14 +101,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="3"
+                android:weightSum="2"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.95"
+                    android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingStart="10dp">
 
@@ -168,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
-                        tools:text="Rp. 1000000"
+                        tools:text="@string/loading"
                         android:maxLines="1"
                         android:ellipsize="end"/>
 
@@ -177,7 +132,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.95"
+                    android:layout_weight="1"
                     android:orientation="vertical"
                     android:paddingStart="10dp">
 
@@ -192,40 +147,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16sp"
-                        tools:text="11/10/2019"
+                        tools:text="@string/loading"
                         android:maxLines="1"
                         android:ellipsize="end"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.1"
-                    android:orientation="vertical"
-                    android:paddingStart="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/status"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/txtStatus"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:textSize="16sp"
-                        tools:text="Waiting freelancer"
-                        android:textColor="@color/colorBlue"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -242,39 +173,32 @@
                     android:id="@+id/txtDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="jksahdsahdskhjdk"
+                    android:text="@string/loading"
                     android:textSize="15sp" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/applicantsContainer"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/txtApplicant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/applicants"
+                    android:textSize="20sp" />
+
                 <LinearLayout
+                    android:id="@+id/applicantsList"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/btnCancel"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:background="#DB1414"
-                        android:text="@string/cancel_job"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="17sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="10dp"/>
-
-                    <Button
-                        android:id="@+id/btnFinish"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/finish_job"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="17sp"
-                        android:textStyle="bold"
-                        android:layout_marginTop="20dp"/>
-
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
 
 
             </LinearLayout>
