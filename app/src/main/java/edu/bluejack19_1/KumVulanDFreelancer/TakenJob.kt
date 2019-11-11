@@ -18,6 +18,7 @@ class TakenJob(name: String, client: String, deadline: String, description: Stri
         val EST_PRICE = "est_price"
         val FREELANCER = "freelancer"
         val STATUS = "status"
+        val APPLICANTS = "applicants"
         val OTHER_PARTY_EMAIL = "otherPartyEmail"
         val YOUR_ROLE = "yourRole"
         val ID = "id"
@@ -25,5 +26,6 @@ class TakenJob(name: String, client: String, deadline: String, description: Stri
         val WAITING_CLIENT = "Waiting client"
         val WAITING_FREELANCER = "Waiting freelancer"
         val FINISHED = "Finished"
+        val ISSUED = "Issued"
     }
 }

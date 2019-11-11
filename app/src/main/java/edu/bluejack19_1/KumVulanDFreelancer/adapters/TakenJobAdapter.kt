@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toDrawable
 import com.bumptech.glide.Glide
 import edu.bluejack19_1.KumVulanDFreelancer.*
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragment
@@ -36,24 +36,14 @@ class TakenJobAdapter(private val context: Context, private val jobs: ArrayList<
         val row = inflater.inflate(R.layout.taken_job, parent, false)
         val job = getItem(position) as TakenJob
 
-        loadValues(row, job)
+        loadValues(row as LinearLayout, job)
 
         row.setOnClickListener {
-            val intent = Intent(context, JobDetailActivity::class.java)
-            lateinit var otherPartyEmail: String
-            when (HomeFragment.role) {
-                TakenJob.CLIENT -> {
-                    otherPartyEmail = job.freelancer
-                }
-                TakenJob.FREELANCER -> {
-                    otherPartyEmail = job.client
-                }
+            if (job.status == TakenJob.ISSUED) {
+                loadJobDetailPre(job)
+            } else {
+                loadJobDetailPost(job)
             }
-            intent.putExtra(TakenJob.YOUR_ROLE, HomeFragment.role)
-            intent.putExtra(TakenJob.OTHER_PARTY_EMAIL, otherPartyEmail)
-            intent.putExtra(TakenJob.ID, job.id)
-
-            ContextCompat.startActivity(context, intent, null)
         }
 
         if (HomeFragment.role == TakenJob.CLIENT && job.status == TakenJob.WAITING_FREELANCER) {
@@ -72,10 +62,34 @@ class TakenJobAdapter(private val context: Context, private val jobs: ArrayList<
         }
 
         row.btnFinishJob.setOnClickListener {
-            confirmationPopUp(job, row)
+            confirmationPopUp(job)
         }
 
         return row
+    }
+
+    private fun loadJobDetailPre(job: TakenJob) {
+        val intent = Intent(context, JobDetailActivityPre::class.java)
+        intent.putExtra(TakenJob.ID, job.id)
+        ContextCompat.startActivity(context, intent, null)
+    }
+
+    private fun loadJobDetailPost(job: TakenJob) {
+        val intent = Intent(context, JobDetailActivityPost::class.java)
+        lateinit var otherPartyEmail: String
+        when (HomeFragment.role) {
+            TakenJob.CLIENT -> {
+                otherPartyEmail = job.freelancer
+            }
+            TakenJob.FREELANCER -> {
+                otherPartyEmail = job.client
+            }
+        }
+        intent.putExtra(TakenJob.YOUR_ROLE, HomeFragment.role)
+        intent.putExtra(TakenJob.OTHER_PARTY_EMAIL, otherPartyEmail)
+        intent.putExtra(TakenJob.ID, job.id)
+
+        ContextCompat.startActivity(context, intent, null)
     }
 
     private fun disableButton(row: View) {
@@ -86,15 +100,15 @@ class TakenJobAdapter(private val context: Context, private val jobs: ArrayList<
     }
 
 
-    private fun confirmationPopUp(job: TakenJob, row: View) {
+    private fun confirmationPopUp(job: TakenJob) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle("Confirmation")
         builder.setMessage("Do you really want to finish this job?")
             .setCancelable(true)
-            .setPositiveButton("YES") { dialog, which ->
+            .setPositiveButton("YES") { _, _ ->
                 updateJobStatus(job)
             }
-            .setNegativeButton("NO"){dialog, which ->  }
+            .setNegativeButton("NO"){_, _ ->  }
         builder.create().show()
     }
 
@@ -172,11 +186,17 @@ class TakenJobAdapter(private val context: Context, private val jobs: ArrayList<
         return data
     }
 
-    private fun loadValues(row: View, job: TakenJob) {
+    private fun loadValues(row: LinearLayout, job: TakenJob) {
         row.txtJobName.text = job.name
         row.txtDeadline.text = job.deadline
         row.txtStatus.text = job.status
 
+        if (job.status == TakenJob.ISSUED) {
+            row.otherPartyContainer.visibility = View.GONE
+            row.imgOtherParty.visibility = View.GONE
+            row.btnFinishJob.visibility = View.GONE
+            return
+        }
         loadOtherPartyDatas(row, job)
     }
 

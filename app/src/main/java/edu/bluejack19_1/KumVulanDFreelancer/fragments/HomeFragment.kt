@@ -60,6 +60,7 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     val data = document.data as HashMap<String, Any>
+                    Log.d("test", "$data $role ${firebaseAuth().currentUser!!.email}")
                     data.set("id", document.id)
                     jobs.add(data)
                 }

@@ -86,7 +86,6 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
 
             skillsContainer.addView(skill)
         }
-
     }
 
     private fun loadAbout() {
@@ -121,7 +120,7 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
             hideReviews()
             return
         }
-        populateSkillsContainer(reviews)
+        populateReviewsContainer(reviews)
 
     }
 
@@ -130,7 +129,7 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
         listReview.visibility = View.GONE
     }
 
-    private fun populateSkillsContainer(reviews: ArrayList<Map<String, Any>>) {
+    private fun populateReviewsContainer(reviews: ArrayList<Map<String, Any>>) {
         val adapter = ReviewAdapter(this.context!!, getReviewArrayList(reviews))
         listReview.adapter = adapter
 
