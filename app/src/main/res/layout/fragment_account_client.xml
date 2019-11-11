@@ -97,7 +97,7 @@
                     android:textColor="@color/colorBlue"/>
 
                 <TextView
-                    android:id="@+id/btnAboutAndDisclaimer"
+                    android:id="@+id/btnAboutAndDisclaimerClient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"

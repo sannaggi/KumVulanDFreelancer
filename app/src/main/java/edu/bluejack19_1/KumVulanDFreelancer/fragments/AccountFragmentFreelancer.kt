@@ -12,7 +12,13 @@ import com.bumptech.glide.Glide
 import com.google.android.flexbox.FlexboxLayout
 import edu.bluejack19_1.KumVulanDFreelancer.*
 import edu.bluejack19_1.KumVulanDFreelancer.adapters.ReviewAdapter
+import kotlinx.android.synthetic.main.fragment_account_client.*
 import kotlinx.android.synthetic.main.fragment_account_freelancer.*
+import kotlinx.android.synthetic.main.fragment_account_freelancer.btnEdit
+import kotlinx.android.synthetic.main.fragment_account_freelancer.btnLogout
+import kotlinx.android.synthetic.main.fragment_account_freelancer.profileImage
+import kotlinx.android.synthetic.main.fragment_account_freelancer.txtAbout
+import kotlinx.android.synthetic.main.fragment_account_freelancer.txtName
 import java.lang.Exception
 import kotlin.collections.ArrayList
 
@@ -182,6 +188,13 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProfileDatas()
         initializeLogoutButton()
+        initializeAboutDisclaimer()
         initializeEditButton()
+    }
+    private fun initializeAboutDisclaimer(){
+        btnAboutAndDisclaimerFreelancer.setOnClickListener {
+            val intent = Intent(this.context, AboutDisclaimer::class.java);
+            startActivity(intent)
+        }
     }
 }

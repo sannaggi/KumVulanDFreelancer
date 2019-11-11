@@ -38,8 +38,16 @@ class AccountFragmentClient(parent: MainActivity) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         loadProfileDatas()
         initializeLogoutButton()
+        initializeAboutDisclaimer()
         initializeEditButton()
         initializeRegisterFreelancerButton()
+    }
+
+    private fun initializeAboutDisclaimer(){
+        btnAboutAndDisclaimerClient.setOnClickListener {
+            val intent = Intent(this.context, AboutDisclaimer::class.java);
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

@@ -7,6 +7,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,26 +16,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JobDetailActivityPost"/>
-        <activity android:name=".JobDetailActivityPre"/>
+        <activity android:name=".AboutDisclaimer"></activity>
+        <activity android:name=".JobDetailActivityPost" />
+        <activity android:name=".JobDetailActivityPre" />
         <activity android:name=".RegisterFreelancerActivity" />
-        <activity android:name=".EditProfileActivity"></activity>
-        <activity android:name=".LoginRegisterActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"/>
+        <activity android:name=".EditProfileActivity" />
+        <activity
+            android:name=".LoginRegisterActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterClientActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
-    </application>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+    </application>
 
 </manifest>
