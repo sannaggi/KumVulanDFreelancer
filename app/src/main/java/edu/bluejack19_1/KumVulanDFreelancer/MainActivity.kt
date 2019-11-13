@@ -10,6 +10,7 @@ import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragmentFreelancer
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.HomeFragmentGuest
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.AccountFragmentGuest
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragment
+import edu.bluejack19_1.KumVulanDFreelancer.fragments.PeopleFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -100,5 +101,6 @@ class MainActivity : AppCompatActivity() {
         jobsFragment = JobsFragment()
 
         addFragment(homeFragment)
+        addFragment(PeopleFragment(this))
     }
 }
