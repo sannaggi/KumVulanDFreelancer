@@ -1,15 +1,20 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
+import android.content.ClipData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.example.kumvulandfreelancer.Fragments.JobsFragment
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragmentClient
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragmentFreelancer
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.HomeFragmentGuest
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.AccountFragmentGuest
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragment
+import edu.bluejack19_1.KumVulanDFreelancer.fragments.PeopleFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeFragment: Fragment
     private lateinit var jobsFragment: JobsFragment
     private lateinit var accountFragment: Fragment
+    private var chatFragment: Fragment? = null
 
     fun jumpToJobsFragment() {
         addFragment(jobsFragment)
@@ -24,8 +30,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun logout() {
+
         accountFragment = AccountFragmentGuest(this)
         homeFragment = HomeFragmentGuest(this)
+        chatFragment = accountFragment;
         addFragment(accountFragment)
     }
 
@@ -36,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             AccountFragmentFreelancer(this)
         }
 
+        chatFragment = PeopleFragment(this)
         homeFragment = HomeFragment(this)
         addFragment(accountFragment)
     }
@@ -47,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             AccountFragmentFreelancer(this)
         }
 
+        chatFragment = PeopleFragment(this)
         homeFragment = HomeFragment(this)
         addFragment(homeFragment)
     }
@@ -75,6 +85,11 @@ class MainActivity : AppCompatActivity() {
                 addFragment(accountFragment)
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.nav_chat ->{
+
+                addFragment(chatFragment!!)
+                return@OnNavigationItemSelectedListener true
+            }
         }
         false
     }
@@ -91,14 +106,19 @@ class MainActivity : AppCompatActivity() {
             } else {
                 AccountFragmentFreelancer(this)
             }
+
+            chatFragment = PeopleFragment(this)
             homeFragment = HomeFragment(this)
         } else {
             accountFragment = AccountFragmentGuest(this)
             homeFragment = HomeFragmentGuest(this)
+            chatFragment = accountFragment;
         }
 
         jobsFragment = JobsFragment()
 
         addFragment(homeFragment)
     }
+
+
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import edu.bluejack19_1.KumVulanDFreelancer.*
+import kotlinx.android.synthetic.main.fragment_account_freelancer.*
 import kotlinx.android.synthetic.main.fragment_account_guest.*
 
 class AccountFragmentGuest(parent: MainActivity): Fragment() {
@@ -40,6 +41,13 @@ class AccountFragmentGuest(parent: MainActivity): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initializeLoginButton()
+        initializeAboutDisclaimer()
     }
 
+    private fun initializeAboutDisclaimer(){
+        btnAboutAndDisclaimerGuest.setOnClickListener {
+            val intent = Intent(this.context, AboutDisclaimer::class.java);
+            startActivity(intent)
+        }
+    }
 }

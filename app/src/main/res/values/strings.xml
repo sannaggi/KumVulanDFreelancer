@@ -51,12 +51,21 @@
     <string name="price">Price</string>
     <string name="issue_new_job">Issue new job +</string>
     <string name="waiting_confirmation">Waiting confirmation</string>
+    <string name="about_us_and_disclaimer">About us and Disclaimer</string>
     <string name="applicants">Applicants</string>
     <string name="accept">Accept</string>
     <string name="reject">Reject</string>
-
+    <string name="chat_people_prompt">Choose a category</string>
+    <string-array name="chat_people_categories">
+        <item>All</item>
+        <item>Archived</item>
+        <item>Starred</item>
+    </string-array>
     <string-array name="role_array">
         <item>Client</item>
         <item>Freelancer</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
