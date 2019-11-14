@@ -27,5 +27,6 @@ class TakenJob(name: String, client: String, deadline: String, description: Stri
         val WAITING_FREELANCER = "Waiting freelancer"
         val FINISHED = "Finished"
         val ISSUED = "Issued"
+        val REJECTED = "Rejected"
     }
 }

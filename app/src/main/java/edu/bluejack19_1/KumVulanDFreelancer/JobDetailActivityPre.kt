@@ -1,5 +1,6 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -99,8 +100,77 @@ class JobDetailActivityPre : AppCompatActivity() {
                     loadImage(User.getProfileImagePath(applicantData.get(User.PROFILE_IMAGE).toString()), applicant.imgProfile)
                 }
 
+            applicant.btnAccept.setOnClickListener {_ -> acceptApplicant(it, applicant)}
+            applicant.btnReject.setOnClickListener {_ -> rejectApplicant(it, applicant)}
+
             applicantsList.addView(applicant)
         }
+    }
+
+    private fun acceptApplicant(applicantID: String, view: View) {
+        //TODO loading animation
+        acceptApplicant(applicantID)
+
+        firebaseDatabase()
+            .collection("jobs")
+            .document(jobID)
+            .update(jobData)
+            .addOnSuccessListener {
+                loadJobDetailPost(applicantID)
+            }
+    }
+
+    private fun rejectApplicant(applicantID: String, view: View) {
+        firebaseDatabase()
+            .collection("finished_jobs")
+            .add(generateRejectData(applicantID))
+            .addOnSuccessListener {
+                //TODO loading animation
+
+                firebaseDatabase()
+                    .collection("jobs")
+                    .document(jobID)
+                    .set(jobData)
+                    .addOnSuccessListener {
+                        removeApplicant(applicantID, view)
+                        Log.d("testt", "succ")
+                    }
+            }
+    }
+
+    private fun loadJobDetailPost(applicantID: String) {
+        val intent = Intent(this, JobDetailActivityPost::class.java)
+        val otherPartyEmail = applicantID
+
+        intent.putExtra(TakenJob.YOUR_ROLE, TakenJob.CLIENT)
+        intent.putExtra(TakenJob.OTHER_PARTY_EMAIL, otherPartyEmail)
+        intent.putExtra(TakenJob.ID, jobID)
+
+        startActivity(intent)
+        finish()
+    }
+
+    private fun acceptApplicant(applicantID: String) {
+        jobData.remove(TakenJob.APPLICANTS)
+        jobData.set(TakenJob.FREELANCER, applicantID)
+        jobData.set(TakenJob.STATUS, TakenJob.ON_GOING)
+    }
+
+    private fun generateRejectData(applicantID: String): HashMap<String, Any> {
+        val removeData = jobData.clone() as HashMap<String, Any>
+        removeData.remove(TakenJob.APPLICANTS)
+        removeData.set(TakenJob.FREELANCER, applicantID)
+        removeData.set(TakenJob.STATUS, TakenJob.REJECTED)
+
+        return removeData
+    }
+
+    private fun removeApplicant(applicantID: String, applicantView: View) {
+        val applicants = jobData.get(TakenJob.APPLICANTS) as ArrayList<String>
+        applicants.remove(applicantID)
+
+        applicantsList.removeView(applicantView)
+        if (applicants.isEmpty()) applicantsContainer.visibility = View.GONE
     }
 
     private fun loadImage(path: String, img: CircleImageView?) {

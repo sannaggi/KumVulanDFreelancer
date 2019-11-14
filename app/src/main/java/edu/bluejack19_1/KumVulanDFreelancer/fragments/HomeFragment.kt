@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.redirect_to_jobs_button.view.*
 
 class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
     val main = main
+    var firstLoad = true
 
     companion object {
         var role: String = TakenJob.CLIENT
@@ -34,7 +35,7 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
 
     override fun onResume() {
         super.onResume()
-        fetchData()
+        if (!firstLoad) fetchData()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +46,7 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
     }
 
     private fun fetchData() {
+        firstLoad = false
         Log.d("firebase", role)
 
         emptyJobMessageContainer.visibility = View.GONE
@@ -60,7 +62,7 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     val data = document.data as HashMap<String, Any>
-                    Log.d("test", "$data $role ${firebaseAuth().currentUser!!.email}")
+                    Log.d("testt", "sad $role $data ${firebaseAuth().currentUser!!.email}")
                     data.set("id", document.id)
                     jobs.add(data)
                 }
