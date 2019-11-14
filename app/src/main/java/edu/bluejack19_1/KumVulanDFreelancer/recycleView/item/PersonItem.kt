@@ -61,6 +61,8 @@ class PersonItem(val people: ChatPeople, private val context: Context)
         } catch (e: Exception) {
             Log.d("firebase", "invalid image loading intercepted")
         }
+
+
     }
 
     override fun getLayout() = R.layout.person_item_fragment
