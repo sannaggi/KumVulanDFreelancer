@@ -43,7 +43,7 @@ class PersonItem(val people: ChatPeople, private val context: Context)
 
     private fun init(viewHolder: ViewHolder){
 
-        viewHolder.textView_name.text = person.data["name"].toString();
+        viewHolder.textView_name.text = person.getName();
         viewHolder.textView_last_message.text = people.last_message;
 
         try {

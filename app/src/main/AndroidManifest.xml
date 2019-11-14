@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AboutDisclaimer"></activity>
+        <activity android:name=".ChatPageActivity"></activity>
+        <activity android:name=".AboutDisclaimer" />
         <activity android:name=".JobDetailActivityPost" />
         <activity android:name=".JobDetailActivityPre" />
         <activity android:name=".RegisterFreelancerActivity" />

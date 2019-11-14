@@ -4,5 +4,4 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 
 class FetchUserAdapter : GroupAdapter<ViewHolder>() {
-
 }
