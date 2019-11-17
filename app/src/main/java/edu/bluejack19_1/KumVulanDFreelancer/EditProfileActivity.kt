@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -18,10 +19,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.flexbox.FlexboxLayout
 import kotlinx.android.synthetic.main.activity_edit_profile.*
+import kotlinx.android.synthetic.main.activity_edit_profile.progress_loading
 import kotlinx.android.synthetic.main.activity_edit_profile.skillsContainer
 import kotlinx.android.synthetic.main.activity_edit_profile.txtAbout
 import kotlinx.android.synthetic.main.activity_edit_profile.txtAcademic
 import kotlinx.android.synthetic.main.activity_edit_profile.txtName
+import kotlinx.android.synthetic.main.activity_job_detail_pre.*
 import kotlinx.android.synthetic.main.profile_edit_skill.view.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -145,9 +148,7 @@ class EditProfileActivity : AppCompatActivity() {
                     txtName.text.isEmpty() -> Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_LONG).show()
                 }
             } else if (::imagePath.isInitialized) {
-
-                // TODO add progress bar
-                val progress: ProgressBar = ProgressBar(this)
+                showLoading()
 
                 val imageName = UUID.randomUUID().toString()
                 val ref = firebaseStorageReference().child("${User.PROFILE_IMAGE_DIR}/" + imageName)
@@ -158,10 +159,12 @@ class EditProfileActivity : AppCompatActivity() {
                         firebaseDatabase().collection("users")
                             .document(firebaseAuth().currentUser!!.email + "")
                             .set(data).addOnSuccessListener {
+                                hideLoading()
                                 refreshUserData(data)
                                 Toast.makeText(applicationContext, "Profile updated successfully", Toast.LENGTH_LONG).show()
                                 finish()
                             }.addOnFailureListener {
+                                hideLoading()
                                 Toast.makeText(applicationContext, "Profile update failed", Toast.LENGTH_LONG).show()
                             }
                     }
@@ -169,14 +172,17 @@ class EditProfileActivity : AppCompatActivity() {
                         Log.d("firebase", "image upload unsuccessful")
                     }
             } else {
+                showLoading()
                 val data = getNewProfileDatas("")
                 firebaseDatabase().collection("users")
                     .document(firebaseAuth().currentUser!!.email + "")
                     .set(data).addOnSuccessListener {
+                        hideLoading()
                         refreshUserData(data)
                         Toast.makeText(applicationContext, "Profile updated successfully", Toast.LENGTH_LONG).show()
                         finish()
                     }.addOnFailureListener {
+                        hideLoading()
                         Toast.makeText(applicationContext, "Profile update failed", Toast.LENGTH_LONG).show()
                     }
             }
@@ -248,5 +254,15 @@ class EditProfileActivity : AppCompatActivity() {
             imgProfile.setImageURI(data?.data)
             imagePath = data?.data!!
         }
+    }
+
+    private fun showLoading() {
+        progress_loading.visibility = View.VISIBLE
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    private fun hideLoading() {
+        progress_loading.visibility = View.GONE
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 }

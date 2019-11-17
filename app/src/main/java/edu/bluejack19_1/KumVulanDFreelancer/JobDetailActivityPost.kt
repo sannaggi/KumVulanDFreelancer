@@ -1,5 +1,6 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -26,6 +27,12 @@ class JobDetailActivityPost : AppCompatActivity() {
 
         fetchIntentData()
         getJobData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        System.last_activity = System.JOB_DETAIL_ACTIVITY_POST
     }
 
     private fun fetchIntentData() {
@@ -56,6 +63,26 @@ class JobDetailActivityPost : AppCompatActivity() {
     private fun launchActivity() {
         showDatas()
         initializeFinishButton()
+        initializeClientImageOnClick()
+        initializeFreelancerImageOnClick()
+    }
+
+    private fun initializeClientImageOnClick() {
+        imgClient.setOnClickListener {
+            val intent = Intent(this, AccountActivityClient::class.java)
+            intent.putExtra("ID", data.get(TakenJob.CLIENT).toString())
+
+            startActivity(intent)
+        }
+    }
+
+    private fun initializeFreelancerImageOnClick() {
+        imgFreelancer.setOnClickListener {
+            val intent = Intent(this, AccountActivityFreelancer::class.java)
+            intent.putExtra("ID", data.get(TakenJob.CLIENT).toString())
+
+            startActivity(intent)
+        }
     }
 
     private fun initializeFinishButton() {

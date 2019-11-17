@@ -35,6 +35,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/btnAccept"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="@string/accept"
@@ -44,6 +45,7 @@
             android:textColor="@color/white"/>
 
         <Button
+            android:id="@+id/btnReject"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="@string/reject"

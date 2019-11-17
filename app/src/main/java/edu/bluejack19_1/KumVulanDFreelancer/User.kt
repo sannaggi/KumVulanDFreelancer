@@ -22,6 +22,10 @@ class User {
         val CLIENT = "Client"
         val DEFAULT_PROFILE_IMAGE = "default_profile.png"
 
+        fun getEmail(): String {
+            return firebaseAuth().currentUser!!.email!!
+        }
+
         fun getProfileImage(): String {
             return "${PROFILE_IMAGE_DIR}/${getProfileImageName()}"
         }

@@ -13,5 +13,9 @@ class System {
         val EDIT_PROFILE_ACTIVITY = "editProfileActivity"
         val REGISTER_CLIENT_ACTIVITY = "registerClientActivity"
         val REGISTER_FREELANCER_ACTIVITY = "registerFreelancerActivity"
+        val HISTORY_FRAGMENT = "historyFragment"
+        val JOB_DETAIL_ACTIVITY_PRE = "jobDetailActivityPre"
+        val JOB_DETAIL_ACTIVITY_POST = "jobDetailActivityPost"
+        val HOME_FRAGMENT_CONTAINER = "homeFragmentContainer"
     }
 }
