@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
@@ -57,13 +59,25 @@ class JobDetailActivityPre : AppCompatActivity() {
 
     private fun launchActivity() {
         showDatas()
+        initializeClientImageOnClick()
+    }
+
+
+    private fun initializeClientImageOnClick() {
+        imgClient.setOnClickListener {
+            val intent = Intent(this, AccountActivityClient::class.java)
+            intent.putExtra("ID", jobData.get(TakenJob.CLIENT).toString())
+
+            startActivity(intent)
+        }
     }
 
     private fun showDatas() {
         progress_circular.visibility = View.GONE
+        Log.d("testt", "asd")
         val params = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT)
-        params.gravity = Gravity.NO_GRAVITY
         container.layoutParams = params
+        Log.d("testt", "dsd")
         jobDetail.visibility = View.VISIBLE
 
         loadDatas()
@@ -74,6 +88,11 @@ class JobDetailActivityPre : AppCompatActivity() {
         txtDeadline.text = jobData.get(TakenJob.DEADLINE).toString()
         txtPrice.text = jobData.get(TakenJob.EST_PRICE).toString()
         txtDescription.text = jobData.get(TakenJob.DESCRIPTION).toString()
+
+        if (jobData.get(TakenJob.CLIENT).toString() == User.getEmail()) {
+            applicantsContainer.visibility = View.GONE
+            return
+        }
 
         loadApplicants()
     }
@@ -108,7 +127,8 @@ class JobDetailActivityPre : AppCompatActivity() {
     }
 
     private fun acceptApplicant(applicantID: String, view: View) {
-        //TODO loading animation
+        progress_loading.visibility = View.VISIBLE
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         acceptApplicant(applicantID)
 
         firebaseDatabase()
@@ -117,22 +137,28 @@ class JobDetailActivityPre : AppCompatActivity() {
             .update(jobData)
             .addOnSuccessListener {
                 loadJobDetailPost(applicantID)
+                progress_loading.visibility = View.GONE
+                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             }
     }
 
     private fun rejectApplicant(applicantID: String, view: View) {
+        progress_loading.visibility = View.VISIBLE
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+
         firebaseDatabase()
             .collection("finished_jobs")
             .add(generateRejectData(applicantID))
             .addOnSuccessListener {
-                //TODO loading animation
+                removeApplicant(applicantID, view)
 
                 firebaseDatabase()
                     .collection("jobs")
                     .document(jobID)
                     .set(jobData)
                     .addOnSuccessListener {
-                        removeApplicant(applicantID, view)
+                        progress_loading.visibility = View.GONE
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                         Log.d("testt", "succ")
                     }
             }
