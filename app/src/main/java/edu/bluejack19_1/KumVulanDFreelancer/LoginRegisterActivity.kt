@@ -49,7 +49,9 @@ class LoginRegisterActivity : AppCompatActivity() {
 //        FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(application);
 
+        Log.d("firebase", "shtasdsa")
         googleLoginBtn.setOnClickListener{
+            Log.d("firebase", "sht3")
             val signInIntent = getGoogleSignInClient().signInIntent;
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
@@ -122,6 +124,7 @@ class LoginRegisterActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == RC_SIGN_IN) {
+            Log.d("firebase", "sht4")
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase

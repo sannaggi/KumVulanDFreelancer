@@ -14,10 +14,8 @@ import com.xwray.groupie.OnItemClickListener
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import edu.bluejack19_1.KumVulanDFreelancer.ChatPageActivity
+import edu.bluejack19_1.KumVulanDFreelancer.*
 import edu.bluejack19_1.KumVulanDFreelancer.Firebase.FirebaseUtil
-import edu.bluejack19_1.KumVulanDFreelancer.MainActivity
-import edu.bluejack19_1.KumVulanDFreelancer.R
 import edu.bluejack19_1.KumVulanDFreelancer.recycleView.item.PersonItem
 import kotlinx.android.synthetic.main.fragment_people.*
 
@@ -32,6 +30,7 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
         userListenerRegistration = FirebaseUtil.addChatPeopleListener(this.activity!!, this::updateRecyclerView)
 
         return inflater.inflate(R.layout.fragment_people, container, false)
@@ -55,21 +54,23 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
             }
             shouldInitRecyclerView = false
         }
-        fun updateItems(){
-
-        }
+        fun updateItems() = peopleSection.update(items)
 
         if(shouldInitRecyclerView) init()
         else updateItems()
     }
 
-    private val onItemClick = OnItemClickListener{item, view ->
+    private val onItemClick = OnItemClickListener{ item, view ->
         if(item is PersonItem){
-            ChatPageActivity.email = item.people.email
+            ChatPageActivity.chat_id = item.people.chat_id
             ChatPageActivity.person = item.person
+            ChatPageActivity.userDocRef = firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email + "")
+            ChatPageActivity.otherDocRef = firebaseDatabase().collection("users").document(item.people.email)
+            ChatPageActivity.chatPeople = item.people
 
             var intent = Intent(this.context, ChatPageActivity::class.java)
             startActivity(intent)
         }
     }
+
 }
