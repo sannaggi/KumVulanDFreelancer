@@ -1,19 +1,17 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
-import android.content.ClipData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.core.view.get
+import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.kumvulandfreelancer.Fragments.JobsFragment
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragmentClient
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragmentFreelancer
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.HomeFragmentGuest
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.AccountFragmentGuest
-import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragment
+import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragmentContainer
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.PeopleFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun logout() {
-
         accountFragment = AccountFragmentGuest(this)
         homeFragment = HomeFragmentGuest(this)
         chatFragment = accountFragment;
@@ -45,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         chatFragment = PeopleFragment(this)
-        homeFragment = HomeFragment(this)
+        homeFragment = HomeFragmentContainer()
         addFragment(accountFragment)
     }
 
@@ -57,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         chatFragment = PeopleFragment(this)
-        homeFragment = HomeFragment(this)
+        homeFragment = HomeFragmentContainer()
         addFragment(homeFragment)
     }
 
@@ -98,6 +95,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        mainActivityInstance = this
+
         bottom_navigation.setOnNavigationItemSelectedListener(navListener)
 
         if(User.data!!.isNotEmpty()) {
@@ -108,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             chatFragment = PeopleFragment(this)
-            homeFragment = HomeFragment(this)
+            homeFragment = HomeFragmentContainer()
         } else {
             accountFragment = AccountFragmentGuest(this)
             homeFragment = HomeFragmentGuest(this)
@@ -116,7 +115,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         jobsFragment = JobsFragment()
-
         addFragment(homeFragment)
     }
 

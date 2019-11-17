@@ -29,6 +29,11 @@ class JobDetailActivityPre : AppCompatActivity() {
         getJobData()
     }
 
+    override fun onResume() {
+        super.onResume()
+        System.last_activity = System.JOB_DETAIL_ACTIVITY_PRE
+    }
+
     private fun fetchIntentData() {
         jobID = intent.extras!!.get(TakenJob.ID).toString()
     }
@@ -74,10 +79,8 @@ class JobDetailActivityPre : AppCompatActivity() {
 
     private fun showDatas() {
         progress_circular.visibility = View.GONE
-        Log.d("testt", "asd")
         val params = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT)
         container.layoutParams = params
-        Log.d("testt", "dsd")
         jobDetail.visibility = View.VISIBLE
 
         loadDatas()

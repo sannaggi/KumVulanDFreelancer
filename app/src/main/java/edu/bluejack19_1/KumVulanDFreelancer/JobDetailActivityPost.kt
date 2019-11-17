@@ -29,6 +29,12 @@ class JobDetailActivityPost : AppCompatActivity() {
         getJobData()
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        System.last_activity = System.JOB_DETAIL_ACTIVITY_POST
+    }
+
     private fun fetchIntentData() {
         jobID = intent.extras!!.get(TakenJob.ID).toString()
         otherPartyEmail = intent.extras!!.get(TakenJob.OTHER_PARTY_EMAIL).toString()

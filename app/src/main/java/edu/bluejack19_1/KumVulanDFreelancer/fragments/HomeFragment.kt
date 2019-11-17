@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import edu.bluejack19_1.KumVulanDFreelancer.*
 import edu.bluejack19_1.KumVulanDFreelancer.adapters.TakenJobAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home_container.*
 import kotlinx.android.synthetic.main.redirect_to_jobs_button.view.*
 
 class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
@@ -35,7 +36,8 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
 
     override fun onResume() {
         super.onResume()
-        if (!firstLoad) fetchData()
+        if (!firstLoad && System.last_activity != System.HISTORY_FRAGMENT) fetchData()
+        System.last_activity = System.HOME_FRAGMENT
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +45,13 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
 
         initializeSpinner()
         initializeRedirectButton()
+        initializeHistoryButton()
+    }
+
+    private fun initializeHistoryButton() {
+        btnHistory.setOnClickListener {
+            homeFragmentContainer.viewPager.currentItem = 1
+        }
     }
 
     private fun fetchData() {
