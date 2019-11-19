@@ -1,4 +1,4 @@
-package edu.bluejack19_1.KumVulanDFreelancer.Firebase
+package edu.bluejack19_1.KumVulanDFreelancer.firebase
 
 import java.math.BigDecimal
 

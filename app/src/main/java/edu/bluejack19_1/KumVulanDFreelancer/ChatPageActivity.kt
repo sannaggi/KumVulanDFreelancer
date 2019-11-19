@@ -13,10 +13,10 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import edu.bluejack19_1.KumVulanDFreelancer.Firebase.FetchUser
-import edu.bluejack19_1.KumVulanDFreelancer.Firebase.FirebaseUtil
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.FetchUser
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.FirebaseUtil
 import edu.bluejack19_1.KumVulanDFreelancer.adapters.MessagingAdapter
-import edu.bluejack19_1.KumVulanDFreelancer.Firebase.ChatPeople
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.ChatPeople
 import kotlinx.android.synthetic.main.activity_chat_page.*
 import java.lang.Exception
 

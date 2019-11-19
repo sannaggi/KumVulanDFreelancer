@@ -9,7 +9,7 @@ import com.google.firebase.firestore.ListenerRegistration
 import com.xwray.groupie.kotlinandroidextensions.Item
 import edu.bluejack19_1.KumVulanDFreelancer.ChatPageActivity
 import edu.bluejack19_1.KumVulanDFreelancer.firebaseAuth
-import edu.bluejack19_1.KumVulanDFreelancer.Firebase.Message
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.Message
 import edu.bluejack19_1.KumVulanDFreelancer.recycleView.item.MessageItem
 import java.util.Calendar
 

@@ -5,7 +5,7 @@ import android.view.Gravity
 import android.widget.FrameLayout
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import edu.bluejack19_1.KumVulanDFreelancer.Firebase.Message
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.Message
 import edu.bluejack19_1.KumVulanDFreelancer.R
 import edu.bluejack19_1.KumVulanDFreelancer.firebaseAuth
 import kotlinx.android.synthetic.main.item_text_message.*

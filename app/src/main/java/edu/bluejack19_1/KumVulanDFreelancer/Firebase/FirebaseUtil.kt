@@ -1,4 +1,4 @@
-package edu.bluejack19_1.KumVulanDFreelancer.Firebase
+package edu.bluejack19_1.KumVulanDFreelancer.firebase
 
 import android.content.Context
 import android.util.Log

@@ -14,7 +14,7 @@ class HomeFragmentAdapter(fragmentManager: FragmentManager): FragmentStatePagerA
 
     override fun getItem(position: Int): Fragment {
         if (position == 0) return HomeFragment(mainActivityInstance)
-        return HistoryFragment()
+        return HistoryFragment(mainActivityInstance)
     }
 
     override fun getCount(): Int {

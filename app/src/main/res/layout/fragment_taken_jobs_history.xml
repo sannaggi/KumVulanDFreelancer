@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.PostedJobHistoryFragment">
+    tools:context=".fragments.TakenJobsHistoryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/posted_job_history_recycler_view"
+        android:id="@+id/taken_job_history_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

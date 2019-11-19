@@ -5,8 +5,8 @@ import android.util.Log
 import com.bumptech.glide.Glide
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import edu.bluejack19_1.KumVulanDFreelancer.Firebase.ChatPeople
-import edu.bluejack19_1.KumVulanDFreelancer.Firebase.FetchUser
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.ChatPeople
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.FetchUser
 import edu.bluejack19_1.KumVulanDFreelancer.R
 import edu.bluejack19_1.KumVulanDFreelancer.System
 import edu.bluejack19_1.KumVulanDFreelancer.firebaseDatabase

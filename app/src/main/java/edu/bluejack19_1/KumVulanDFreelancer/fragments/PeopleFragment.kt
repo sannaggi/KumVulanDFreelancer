@@ -15,7 +15,7 @@ import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import edu.bluejack19_1.KumVulanDFreelancer.*
-import edu.bluejack19_1.KumVulanDFreelancer.Firebase.FirebaseUtil
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.FirebaseUtil
 import edu.bluejack19_1.KumVulanDFreelancer.recycleView.item.PersonItem
 import kotlinx.android.synthetic.main.fragment_people.*
 
