@@ -158,7 +158,7 @@ class EditProfileActivity : AppCompatActivity() {
                         val data = getNewProfileDatas(imageName)
                         firebaseDatabase().collection("users")
                             .document(firebaseAuth().currentUser!!.email + "")
-                            .set(data).addOnSuccessListener {
+                            .update(data).addOnSuccessListener {
                                 hideLoading()
                                 refreshUserData(data)
                                 Toast.makeText(applicationContext, "Profile updated successfully", Toast.LENGTH_LONG).show()
@@ -176,7 +176,7 @@ class EditProfileActivity : AppCompatActivity() {
                 val data = getNewProfileDatas("")
                 firebaseDatabase().collection("users")
                     .document(firebaseAuth().currentUser!!.email + "")
-                    .set(data).addOnSuccessListener {
+                    .update(data).addOnSuccessListener {
                         hideLoading()
                         refreshUserData(data)
                         Toast.makeText(applicationContext, "Profile updated successfully", Toast.LENGTH_LONG).show()
