@@ -1,6 +1,7 @@
 package edu.bluejack19_1.KumVulanDFreelancer.adapters
 
 import android.content.Context
+import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
@@ -13,9 +14,9 @@ import edu.bluejack19_1.KumVulanDFreelancer.recycleView.item.TakenJobItem
 
 object FinishedJobAdapter{
 
-    val documentRef = firebaseDatabase().collection("finished_job")
-    val postedJobQuery: Query = documentRef.whereEqualTo("client", User.getEmail())
-    val takenJobQuery: Query = documentRef.whereEqualTo("freelancer", User.getEmail())
+    val documentRef = firebaseDatabase().collection("finished_jobs")
+    lateinit var postedJobQuery: Query
+    lateinit var takenJobQuery: Query
 
     fun fetchPostedJobData(doc: DocumentSnapshot, context: Context): List<Item>{
         var items = mutableListOf<Item>()
@@ -23,7 +24,7 @@ object FinishedJobAdapter{
             documents ->
             for (document in documents){
                 items.add(
-                        PostedJobItem(FinishedJob(document.data as HashMap<String, Any>), context)
+                        PostedJobItem(FinishedJob(document.data as HashMap<String, Any>, document.id), context)
                 )
             }
         }
@@ -37,7 +38,7 @@ object FinishedJobAdapter{
             documents ->
             for (document in documents){
                 items.add(
-                        TakenJobItem(FinishedJob(document.data as HashMap<String, Any>), context)
+                        TakenJobItem(FinishedJob(document.data as HashMap<String, Any>, document.id), context)
                 )
             }
         }
@@ -52,8 +53,9 @@ object FinishedJobAdapter{
 
             var items = mutableListOf<FinishedJob>()
             snapshots!!.forEach {
-                items.add(FinishedJob(it.data as HashMap<String, Any>)
+                items.add(FinishedJob(it.data as HashMap<String, Any>, it.id)
                 )
+                Log.d("POSTEDJOB", "Data : ${it.data}")
             }
 
             onListen(items)
@@ -67,7 +69,7 @@ object FinishedJobAdapter{
 
             var items = mutableListOf<FinishedJob>()
             snapshots!!.forEach {
-                items.add(FinishedJob(it.data as HashMap<String, Any>))
+                items.add(FinishedJob(it.data as HashMap<String, Any>, it.id))
             }
 
             onListen(items)

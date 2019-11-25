@@ -5,6 +5,8 @@ class System {
     companion object {
         var last_activity = ""
 
+        val GIVING_REVIEW_ACTIVITY = "givingReviewActivity"
+        val PEOPLE_FRAGMENT = "peopleFragment"
         val LOGIN_REGISTER_ACTIVITY = "loginRegisterActivity"
         val HOME_FRAGMENT = "homeFragment"
         val JOB_FRAGMENT = "jobFragment"

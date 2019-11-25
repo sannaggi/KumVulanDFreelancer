@@ -36,6 +36,11 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
         return inflater.inflate(R.layout.fragment_people, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        System.last_activity = System.PEOPLE_FRAGMENT
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         FirebaseUtil.removeListener(userListenerRegistration);
@@ -73,4 +78,14 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
         }
     }
 
+
+
+    override fun onResume() {
+        super.onResume()
+        if(System.last_activity != System.PEOPLE_FRAGMENT){
+            shouldInitRecyclerView = true
+            userListenerRegistration = FirebaseUtil.addChatPeopleListener(this.activity!!, this::updateRecyclerView)
+        }
+        System.last_activity = System.PEOPLE_FRAGMENT
+    }
 }

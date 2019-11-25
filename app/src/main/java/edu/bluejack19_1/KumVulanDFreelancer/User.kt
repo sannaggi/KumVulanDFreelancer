@@ -21,6 +21,11 @@ class User {
         val FREELANCER = "Freelancer"
         val CLIENT = "Client"
         val DEFAULT_PROFILE_IMAGE = "default_profile.png"
+        val CHAT_PEOPLE = "chat_people"
+
+        fun getChatPeople() : ArrayList<HashMap<String, Any>>?{
+            return data?.get(CHAT_PEOPLE) as ArrayList<HashMap<String, Any>>?
+        }
 
         fun getEmail(): String {
             return firebaseAuth().currentUser!!.email!!

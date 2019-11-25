@@ -1,5 +1,6 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,15 @@ class AccountActivityFreelancer : AppCompatActivity() {
 
         fetchIntentData()
         loadProfileDatas()
+        initializeShowAll()
+    }
+
+    private fun initializeShowAll(){
+        show_all_review_button.setOnClickListener {
+            var intent = Intent(this, ReviewActivity::class.java)
+            intent.putExtra("ID", userID)
+            startActivity(intent)
+        }
     }
 
     private fun fetchIntentData() {
@@ -87,6 +97,7 @@ class AccountActivityFreelancer : AppCompatActivity() {
     }
 
     private fun getReviewArrayList(list: ArrayList<Map<String, Any>>): ArrayList<Review> {
+        var list = list.reversed()
         var reviews: ArrayList<Review> = ArrayList()
         var size = list.size
 
@@ -100,7 +111,8 @@ class AccountActivityFreelancer : AppCompatActivity() {
             val review = list[i].get(User.REVIEW).toString()
             reviews.add(Review(name, profile_image, rating, review))
         }
-        return reviews
+
+        return reviews.reversed() as ArrayList<Review>
     }
 
     private fun loadReview(reviews: ArrayList<Map<String, Any>>) {

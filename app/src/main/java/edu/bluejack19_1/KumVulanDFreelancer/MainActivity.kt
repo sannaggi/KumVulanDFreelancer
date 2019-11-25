@@ -1,5 +1,6 @@
 package edu.bluejack19_1.KumVulanDFreelancer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragmentClient
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.AccountFragmentFreelancer
 import edu.bluejack19_1.KumVulanDFreelancer.Fragments.HomeFragmentGuest
+import edu.bluejack19_1.KumVulanDFreelancer.adapters.FinishedJobAdapter
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.AccountFragmentGuest
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.HistoryFragment
 import edu.bluejack19_1.KumVulanDFreelancer.fragments.HomeFragmentContainer
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             AccountFragmentFreelancer(this)
         }
+        FinishedJobAdapter.takenJobQuery = FinishedJobAdapter.documentRef.whereEqualTo("freelancer", User.getEmail())
+        FinishedJobAdapter.postedJobQuery = FinishedJobAdapter.documentRef.whereEqualTo("client", User.getEmail())
 
         chatFragment = PeopleFragment(this)
         homeFragment = HomeFragmentContainer()
@@ -53,6 +57,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             AccountFragmentFreelancer(this)
         }
+        FinishedJobAdapter.takenJobQuery = FinishedJobAdapter.documentRef.whereEqualTo("freelancer", User.getEmail())
+        FinishedJobAdapter.postedJobQuery = FinishedJobAdapter.documentRef.whereEqualTo("client", User.getEmail())
 
         chatFragment = PeopleFragment(this)
         homeFragment = HomeFragmentContainer()
@@ -107,6 +113,9 @@ class MainActivity : AppCompatActivity() {
                 AccountFragmentFreelancer(this)
             }
 
+            FinishedJobAdapter.takenJobQuery = FinishedJobAdapter.documentRef.whereEqualTo("freelancer", User.getEmail())
+            FinishedJobAdapter.postedJobQuery = FinishedJobAdapter.documentRef.whereEqualTo("client", User.getEmail())
+
             chatFragment = PeopleFragment(this)
             homeFragment = HomeFragmentContainer()
         } else {
@@ -117,7 +126,10 @@ class MainActivity : AppCompatActivity() {
 
         jobsFragment = JobsFragment()
         addFragment(homeFragment)
-        addFragment(HistoryFragment(this))
+
+//        var intent = Intent(this, AccountActivityFreelancer::class.java)
+//        intent.putExtra("ID", "albion0211@gmail.com")
+//        startActivity(intent)
     }
 
 
