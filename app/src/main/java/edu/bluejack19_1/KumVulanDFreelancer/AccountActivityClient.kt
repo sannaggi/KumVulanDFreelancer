@@ -22,6 +22,7 @@ class AccountActivityClient : AppCompatActivity() {
     lateinit var person : FetchUser
     lateinit var chat_id : String
     lateinit var chatPeople : ChatPeople
+    var isNewChat = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class AccountActivityClient : AppCompatActivity() {
         chat_button.setOnClickListener{
             getIdAndChat()
 
+            if(isNewChat) return@setOnClickListener
             ChatPageActivity.chat_id = chat_id
             Log.d("AccountActivityClient", "${chat_id}")
             ChatPageActivity.person = person
@@ -49,20 +51,54 @@ class AccountActivityClient : AppCompatActivity() {
     }
 
     private fun generateNewIdAndChat(){
+        isNewChat = true
         var forUpdate = HashMap<String, Any>()
-        forUpdate.put("chat_people", FieldValue.arrayUnion())
+        forUpdate.put("chats", FieldValue.arrayUnion())
         firebaseDatabase().collection("chat_messages").add(forUpdate).addOnSuccessListener {
             chat_id = it.id
             Log.d("AccountActivityClient", "${it.id}")
-        }
 
-        chatPeople = ChatPeople(
-                chat_id,
-                userID,
-                false,
-                false,
-                ""
-        )
+            chatPeople = ChatPeople(
+                    chat_id,
+                    userID,
+                    false,
+                    false,
+                    ""
+            )
+
+            var toUser = HashMap<String, Any>()
+            toUser.put("chat_people", FieldValue.arrayUnion(
+                    ChatPeople(
+                            chatPeople.chat_id,
+                            chatPeople.email,
+                            chatPeople.isArchive,
+                            chatPeople.isStarred,
+                            chatPeople.last_message
+                    )))
+
+            firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email.toString()).update(toUser)
+
+            var toOther = HashMap<String, Any>()
+            toOther.put("chat_people", FieldValue.arrayUnion(
+                    ChatPeople(
+                            chatPeople.chat_id,
+                            firebaseAuth().currentUser?.email.toString(),
+                            chatPeople.isArchive,
+                            chatPeople.isStarred,
+                            chatPeople.last_message
+                    )))
+            firebaseDatabase().collection("users").document(userID).update(toOther)
+
+            ChatPageActivity.chat_id = chat_id
+            Log.d("AccountActivityClient", "${chat_id}")
+            ChatPageActivity.person = person
+            ChatPageActivity.userDocRef = firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email + "")
+            ChatPageActivity.otherDocRef = firebaseDatabase().collection("users").document(userID)
+            ChatPageActivity.chatPeople = chatPeople
+
+            var intent = Intent(this, ChatPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun getIdAndChat(){
@@ -74,10 +110,13 @@ class AccountActivityClient : AppCompatActivity() {
 
         var isFound = false
 
+        Log.d("AccountActivityClient", "${chatPeopleList.size}")
+
         chatPeopleList!!.forEach {
+            Log.d("AccountActivityClient", "${it["email"].toString()}, ${it["chat_id"].toString()}")
             if(it["email"].toString() == userID){
                 isFound = true
-                chat_id = it["id"].toString()
+                chat_id = it["chat_id"].toString()
                 chatPeople = ChatPeople(
                         chat_id,
                         userID,
