@@ -37,7 +37,7 @@ class HomeFragmentContainer : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        if (System.last_activity != System.HOME_FRAGMENT) {
+        if (System.last_activity != System.HOME_FRAGMENT && System.last_activity != System.JOB_DETAIL_ACTIVITY_PRE && System.last_activity != System.JOB_DETAIL_ACTIVITY_POST) {
             adapter = HomeFragmentAdapter(fragmentManager!!)
             viewPager.adapter = adapter
         }

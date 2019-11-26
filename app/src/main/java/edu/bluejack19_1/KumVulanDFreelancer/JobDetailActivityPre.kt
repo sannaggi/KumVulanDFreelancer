@@ -92,7 +92,7 @@ class JobDetailActivityPre : AppCompatActivity() {
         txtPrice.text = jobData.get(TakenJob.EST_PRICE).toString()
         txtDescription.text = jobData.get(TakenJob.DESCRIPTION).toString()
 
-        if (jobData.get(TakenJob.CLIENT).toString() == User.getEmail()) {
+        if (jobData.get(TakenJob.CLIENT).toString() != User.getEmail()) {
             applicantsContainer.visibility = View.GONE
             return
         }
