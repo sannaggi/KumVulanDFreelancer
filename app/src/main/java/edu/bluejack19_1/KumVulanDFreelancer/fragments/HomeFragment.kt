@@ -37,7 +37,7 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
     override fun onResume() {
         super.onResume()
         if (!firstLoad && System.last_activity != System.HISTORY_FRAGMENT) fetchData()
-        System.last_activity = System.HOME_FRAGMENT
+        if (System.last_activity != System.LOGIN_REGISTER_ACTIVITY && System.last_activity != System.REGISTER_FREELANCER_ACTIVITY && System.last_activity != System.EDIT_PROFILE_ACTIVITY) System.last_activity = System.HOME_FRAGMENT
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -132,6 +132,9 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
     }
 
     private fun initializeSpinner() {
+        spinnerRole.onItemSelectedListener = this
+        spinnerRole.setSelection(0)
+
         if (User.getRole() == User.CLIENT) {
             spinnerRole.visibility = View.GONE
             return
@@ -146,12 +149,10 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
             spinnerRole.adapter = adapter
         }
 
-        spinnerRole.setSelection(0)
         if (User.getRole() == User.FREELANCER) {
             spinnerRole.setSelection(1)
         }
 
-        spinnerRole.onItemSelectedListener = this
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
