@@ -55,6 +55,7 @@
     <string name="applicants">Applicants</string>
     <string name="accept">Accept</string>
     <string name="reject">Reject</string>
+    <string name="job_category">Category</string>
     <string name="chat_people_prompt">Choose a category</string>
     <string name="history_sort_prompt">Choose a category</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -77,6 +78,16 @@ tempor incididunt ut labore et dolore magna aliqua.</string>
         <item>None</item>
         <item>Name</item>
         <item>Rating</item>
+    </string-array>
+    <string-array name="job_categories_array">
+        <item>None</item>
+        <item>Web App</item>
+        <item>Phone App</item>
+        <item>Desktop App</item>
+        <item>Game</item>
+        <item>API</item>
+        <item>Database</item>
+        <item>Custom App</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -19,6 +19,7 @@ class JobItem(var job: Job, val context: Context) : Item(){
         viewHolder.job_description.text = job.description
         viewHolder.job_name.text = job.name
         viewHolder.job_price.text = job.price
+        viewHolder.job_category_name.text = job.category
         FinishedJob.fetchName(viewHolder.job_client, job.client);
 
     }

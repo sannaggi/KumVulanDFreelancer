@@ -35,6 +35,8 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
     private var finishedJobs: List<FinishedJob>? = null
     private lateinit var items: List<Item>
     var isClient: Boolean = true
+    private var currentSortCategory : String = "None"
+    private var currentJobCategory : String = "None"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +56,50 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeSortSpinner()
+        initializeCategorySpinner()
+    }
+
+    private fun jobCategoryFilter(finishedJobs: List<FinishedJob>){
+        var finishedJobs = finishedJobs
+        var toRet = mutableListOf<FinishedJob>()
+        finishedJobs.forEach {
+            if(it.category == currentJobCategory){
+                toRet.add(it)
+            }
+        }
+        sort(toRet)
+    }
+
+    private fun initializeCategorySpinner(){
+        history_job_category_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if(this@HistoryFragment.finishedJobs == null) return
+                var finishedJobs = this@HistoryFragment.finishedJobs
+                this@HistoryFragment.currentJobCategory = history_job_category_spinner.getItemAtPosition(position).toString()
+                jobCategoryFilter(finishedJobs!!)
+            }
+
+        }
+    }
+
+    private fun sort(finishedJobs: List<FinishedJob>){
+        var finishedJobs = finishedJobs
+        if(currentSortCategory.equals("Deadline")){
+            finishedJobs = finishedJobs?.sortedByDescending {
+                it.originalDeadline
+            }
+        }
+        else if(currentSortCategory.equals("Price")){
+            finishedJobs = finishedJobs?.sortedByDescending{
+                it.originalPrice
+            }
+        }
+        convertToItems(finishedJobs!!)
+        jobSection.update(items)
     }
 
     private fun initializeSortSpinner(){
@@ -62,18 +108,9 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
                 if(this@HistoryFragment.finishedJobs == null) return
                 var finishedJobs = this@HistoryFragment.finishedJobs
                 Log.d("SPINNER", "Spinner selected = ${history_sort_category.getItemAtPosition(position)}")
-                if(history_sort_category.getItemAtPosition(position).equals("Deadline")){
-                    finishedJobs = finishedJobs?.sortedByDescending {
-                        it.originalDeadline
-                    }
-                }
-                else if(history_sort_category.getItemAtPosition(position).equals("Price")){
-                    finishedJobs = finishedJobs?.sortedByDescending{
-                        it.originalPrice
-                    }
-                }
-                convertToItems(finishedJobs!!)
-                jobSection.update(items)
+
+                this@HistoryFragment.currentSortCategory = history_sort_category.getItemAtPosition(position).toString()
+                sort(finishedJobs!!)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>){

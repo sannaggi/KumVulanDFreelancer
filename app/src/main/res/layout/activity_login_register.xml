@@ -8,6 +8,18 @@
     android:background="@drawable/blue_green_gradient"
     android:gravity="center">
 
+    <ProgressBar
+        android:id="@+id/login_register_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:scaleY="3"
+        android:scaleX="3"
+        android:layout_marginBottom="45dp"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/com_facebook_blue">
+
+    </ProgressBar>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,12 +29,21 @@
         android:textAlignment="center"
         android:layout_marginBottom="25dp"/>
 
-    <com.google.android.gms.common.SignInButton
-        android:layout_width="249dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/googleLoginBtn">
 
-    </com.google.android.gms.common.SignInButton>
+    <LinearLayout
+        android:id="@+id/login_register_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <com.google.android.gms.common.SignInButton
+            android:layout_width="249dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/googleLoginBtn">
+
+        </com.google.android.gms.common.SignInButton>
 
     <TextView
         android:layout_width="match_parent"
@@ -37,6 +58,7 @@
         android:id="@+id/facebookLoginBtn"
         android:layout_width="240dp"
         android:layout_height="wrap_content">
-
     </com.facebook.login.widget.LoginButton>
+
+    </LinearLayout>
 </LinearLayout>

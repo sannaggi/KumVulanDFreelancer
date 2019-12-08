@@ -20,6 +20,7 @@ class FinishedJob(data: HashMap<String, Any>, id : String){
     val freelancer = string(data[TakenJob.FREELANCER])
     val originalDeadline = SimpleDateFormat("dd/MM/yyy").parse(deadline)
     val status = string(data[TakenJob.STATUS])
+    val category = FinishedJob.string(data["category"])
     var isReviewed = data["reviewed"] as Boolean?
     var isRated = data["rated"] as Boolean?
 

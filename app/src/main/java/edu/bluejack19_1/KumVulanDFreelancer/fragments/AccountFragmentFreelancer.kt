@@ -115,7 +115,8 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
             val profile_image = list[i].get(User.PROFILE_IMAGE).toString()
             val rating = list[i].get(User.RATING).toString().toBigDecimal()
             val review = list[i].get(User.REVIEW).toString()
-            reviews.add(Review(name, profile_image, rating, review))
+            val id = list[i].get("id").toString()
+            reviews.add(Review(name, profile_image, rating, review, id))
         }
         return reviews
     }

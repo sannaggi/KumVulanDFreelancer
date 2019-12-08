@@ -15,5 +15,6 @@ class Job(data: HashMap<String, Any>, id: String){
     val freelancer = FinishedJob.string(data[TakenJob.FREELANCER])
     val originalDeadline = SimpleDateFormat("dd/MM/yyy").parse(deadline)
     val status = FinishedJob.string(data[TakenJob.STATUS])
+    val category = FinishedJob.string(data["category"])
     val applicants = data[TakenJob.APPLICANTS] as ArrayList<String>?
 }

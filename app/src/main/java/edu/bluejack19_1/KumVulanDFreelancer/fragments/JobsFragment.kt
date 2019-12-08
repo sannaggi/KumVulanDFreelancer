@@ -39,6 +39,7 @@ class JobsFragment : Fragment() {
     private var jobs: List<Job>? = null
     private lateinit var items: List<Item>
     private var currentSortCategory : String = "None"
+    private var currentJobCategory : String = "None"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +56,36 @@ class JobsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         System.last_activity = System.JOB_FRAGMENT
         initializeSortSpinner()
+        initializeCategorySpinner()
         initializeSearchBox()
+    }
+
+    private fun jobCategoryFilter(finishedJobs: List<Job>){
+        var finishedJobs = finishedJobs
+        var toRet = mutableListOf<Job>()
+        finishedJobs.forEach {
+            if(it.category == currentJobCategory){
+                toRet.add(it)
+            }
+        }
+        sort(toRet)
+    }
+
+
+    private fun initializeCategorySpinner(){
+        job_category_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if(this@JobsFragment.jobs == null) return
+                var finishedJobs = this@JobsFragment.jobs
+                this@JobsFragment.currentJobCategory = job_category_spinner.getItemAtPosition(position).toString()
+                jobCategoryFilter(finishedJobs!!)
+            }
+
+        }
     }
 
     private fun initializeSearchBox(){
@@ -138,7 +168,7 @@ class JobsFragment : Fragment() {
 
     private val onItemClick = OnItemClickListener{ item, view ->
         if(item is JobItem){
-            view.job_click_to_client.setOnClickListener{
+            view.job_client.setOnClickListener{
                 var intent = Intent(this@JobsFragment.activity!!, AccountActivityClient::class.java)
                 intent.putExtra("ID", item.job.client)
                 startActivity(intent)

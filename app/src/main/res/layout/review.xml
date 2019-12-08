@@ -59,5 +59,39 @@
             android:layout_height="wrap_content"
             android:text="asdsadhaudahdisahdusiahsuaihsahsaudhsaidhsauidhsauidhsaiudhsaiudhsauidhsadui" />
 
+        <LinearLayout
+            android:id="@+id/review_like_dislike"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end|center_vertical"
+            >
+            <TextView
+                android:id="@+id/review_dislike_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👎"
+                android:textSize="20dp"
+                android:layout_marginRight="3dp"/>
+            <TextView
+                android:id="@+id/review_dislike_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dislike Count"/>
+            <TextView
+                android:id="@+id/review_like_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👍"
+                android:textSize="20dp"
+                android:layout_marginRight="3dp"/>
+
+            <TextView
+                android:id="@+id/review_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Like Count"/>
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

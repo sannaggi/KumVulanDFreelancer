@@ -3,9 +3,11 @@ package edu.bluejack19_1.KumVulanDFreelancer.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.ListenerRegistration
@@ -15,9 +17,12 @@ import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import edu.bluejack19_1.KumVulanDFreelancer.*
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.ChatPeople
 import edu.bluejack19_1.KumVulanDFreelancer.firebase.FirebaseUtil
+import edu.bluejack19_1.KumVulanDFreelancer.recycleView.item.MessageItem
 import edu.bluejack19_1.KumVulanDFreelancer.recycleView.item.PersonItem
 import kotlinx.android.synthetic.main.fragment_people.*
+import kotlinx.android.synthetic.main.person_item_fragment.view.*
 
 class PeopleFragment(parent: MainActivity) : Fragment() {
 
@@ -26,6 +31,9 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
     private lateinit var userListenerRegistration: ListenerRegistration
     private var shouldInitRecyclerView = true
     private lateinit var peopleSection: Section
+    private lateinit var items : List<Item>
+    private var chatPeoples : List<ChatPeople>? = null
+    private var currentChatCategory : String = "All"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -39,6 +47,45 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         System.last_activity = System.PEOPLE_FRAGMENT
+        initializeChatCategorySpinner()
+    }
+
+    private fun categoryFilter(chatPeoples: List<ChatPeople>){
+        var toRet = mutableListOf<ChatPeople>()
+        chatPeoples.forEach {
+            if(currentChatCategory == "All"){
+                if(!it.isArchive){
+                    toRet.add(it)
+                }
+            }
+            if(currentChatCategory == "Starred"){
+                if(it.isStarred){
+                    toRet.add(it)
+                }
+            }
+            if(currentChatCategory == "Archive"){
+                if(it.isArchive){
+                    toRet.add(it)
+                }
+            }
+        }
+        convertToItems(toRet)
+    }
+
+    private fun initializeChatCategorySpinner(){
+        people_chat_category.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if(this@PeopleFragment.chatPeoples == null) return
+                var chatPeoples = this@PeopleFragment.chatPeoples
+                this@PeopleFragment.currentChatCategory = people_chat_category.getItemAtPosition(position).toString()
+                categoryFilter(chatPeoples!!)
+            }
+
+        }
     }
 
     override fun onDestroyView() {
@@ -47,19 +94,32 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
         shouldInitRecyclerView = true;
     }
 
-    private fun updateRecyclerView(items: List<Item>){
+    private fun convertToItems(chatPeoples: List<ChatPeople>){
+        var items = mutableListOf<Item>()
+        chatPeoples.forEach {
+            items.add(PersonItem(it, this.activity!!))
+        }
+        this.items = items
+        peopleSection.update(items)
+    }
+
+    private fun updateRecyclerView(items: List<ChatPeople>){
+        this@PeopleFragment.chatPeoples = items
         fun init(){
+            categoryFilter(items)
             recycler_view_people.apply {
                 layoutManager = LinearLayoutManager(this@PeopleFragment.context)
                 adapter = GroupAdapter<ViewHolder>().apply {
-                    peopleSection = Section(items)
+                    peopleSection = Section(this@PeopleFragment.items)
                     add(peopleSection)
                     setOnItemClickListener(onItemClick)
                 }
             }
             shouldInitRecyclerView = false
         }
-        fun updateItems() = peopleSection.update(items)
+        fun updateItems(){
+            categoryFilter(items!!)
+        }
 
         if(shouldInitRecyclerView) init()
         else updateItems()

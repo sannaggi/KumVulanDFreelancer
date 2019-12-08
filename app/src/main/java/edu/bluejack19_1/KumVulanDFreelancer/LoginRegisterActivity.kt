@@ -49,6 +49,9 @@ class LoginRegisterActivity : AppCompatActivity() {
 //        FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(application);
 
+        login_register_button.visibility = View.VISIBLE
+        login_register_loading.visibility = View.GONE
+        
         Log.d("firebase", "shtasdsa")
         googleLoginBtn.setOnClickListener{
             Log.d("firebase", "sht3")
@@ -60,6 +63,8 @@ class LoginRegisterActivity : AppCompatActivity() {
         facebookLoginBtn.setOnClickListener(View.OnClickListener {
 
 //            startAFR
+            login_register_button.visibility = View.GONE
+            login_register_loading.visibility = View.VISIBLE
             callbackManager = CallbackManager.Factory.create()
 //            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"));
             LoginManager.getInstance().registerCallback(callbackManager,
@@ -71,13 +76,17 @@ class LoginRegisterActivity : AppCompatActivity() {
                         }
 
                         override fun onCancel() {
-
+                            login_register_button.visibility = View.VISIBLE
+                            login_register_loading.visibility = View.GONE
                             finish()
                             System.last_activity = System.LOGIN_REGISTER_ACTIVITY;
+
                         }
 
                         override fun onError(exception: FacebookException) {
 
+                            login_register_button.visibility = View.VISIBLE
+                            login_register_loading.visibility = View.GONE
                         }
                     })
         })
@@ -96,6 +105,9 @@ class LoginRegisterActivity : AppCompatActivity() {
                     firebaseDatabase().collection("users")
                             .document(currentUser!!.email + "")
                             .get().addOnSuccessListener {
+
+                                login_register_button.visibility = View.VISIBLE
+                                login_register_loading.visibility = View.GONE
                                 if (it.data != null) {
                                     User.data = it.data as HashMap<String, Any>
                                     Log.d("firebase", "curr user initiated: ${it.data.toString()}")

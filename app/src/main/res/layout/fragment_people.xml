@@ -19,6 +19,7 @@
         android:background="@drawable/soft_border_gray"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"/>
+
     <Spinner
         android:id="@+id/people_chat_category"
         android:layout_width="match_parent"
