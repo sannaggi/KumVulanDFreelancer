@@ -27,6 +27,7 @@ class HomeFragmentGuest(main: MainActivity) : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        Log.d("testt", System.last_activity)
         if(System.last_activity == System.LOGIN_REGISTER_ACTIVITY && User.data!!.isNotEmpty()) {
             main.loginFromHome()
         }

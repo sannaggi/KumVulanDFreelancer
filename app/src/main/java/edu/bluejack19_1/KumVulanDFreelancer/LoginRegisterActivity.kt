@@ -76,10 +76,9 @@ class LoginRegisterActivity : AppCompatActivity() {
                         }
 
                         override fun onCancel() {
-
                             login_register_button.visibility = View.VISIBLE
                             login_register_loading.visibility = View.GONE
-                            finish();
+                            finish()
                             System.last_activity = System.LOGIN_REGISTER_ACTIVITY;
 
                         }
@@ -171,8 +170,9 @@ class LoginRegisterActivity : AppCompatActivity() {
                             if (it.data != null) {
                                 User.data = it.data as HashMap<String, Any>
                                 Log.d("firebase", "curr user initiated: ${it.data.toString()}")
-                                finish()
+                                Log.d("testt", "az")
                                 System.last_activity = System.LOGIN_REGISTER_ACTIVITY
+                                finish()
                             } else {
                                 val builder = AlertDialog.Builder(this)
                                 builder.setTitle("New User")

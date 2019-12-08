@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -132,14 +133,17 @@ class RegisterFreelancerActivity : AppCompatActivity() {
     }
 
     private fun register(data: HashMap<String, Any>) {
+        showLoading()
         firebaseDatabase().collection("users")
             .document(firebaseAuth().currentUser!!.email + "")
-            .set(data)
+            .update(data)
             .addOnSuccessListener {
+                hideLoading()
                 refreshUserData(data)
                 System.last_activity = System.REGISTER_FREELANCER_ACTIVITY
                 finish()
             }.addOnFailureListener {
+                hideLoading()
                 Toast.makeText(applicationContext, "Failed registration as Freelancer", Toast.LENGTH_LONG).show()
             }
     }
@@ -228,5 +232,16 @@ class RegisterFreelancerActivity : AppCompatActivity() {
 
     private fun loadAbout() {
         txtAbout.setText(User.getAbout())
+    }
+
+
+    private fun showLoading() {
+        progress_loading.visibility = View.VISIBLE
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    private fun hideLoading() {
+        progress_loading.visibility = View.GONE
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 }

@@ -37,6 +37,7 @@ class AccountFragmentFreelancer(parent: MainActivity) : Fragment() {
     override fun onResume() {
         super.onResume()
 
+
         if(System.last_activity == System.EDIT_PROFILE_ACTIVITY) {
             loadEditableDatas()
         }

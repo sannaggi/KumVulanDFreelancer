@@ -41,7 +41,7 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        if(User.getRole().equals("Client"))
+        if(HomeFragment.role.equals("client"))
             historyListenerRegistration = FinishedJobAdapter.initializePostedJobListener(this.activity!!, this::updateRecyclerView)
         else{
             isClient = false
@@ -138,9 +138,10 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
     override fun onResume() {
         super.onResume()
 
+        Toast.makeText(this.context, HomeFragment.role, Toast.LENGTH_SHORT).show()
         if(System.last_activity != System.HISTORY_FRAGMENT){
             shouldInitRecyclerView = true
-            if(User.getRole().equals("Client"))
+            if(HomeFragment.role.equals("client"))
                 historyListenerRegistration = FinishedJobAdapter.initializePostedJobListener(this.activity!!, this::updateRecyclerView)
             else{
                 isClient = false

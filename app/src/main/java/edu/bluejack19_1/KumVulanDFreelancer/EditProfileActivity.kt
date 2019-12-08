@@ -141,11 +141,12 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun initializeCommitButton() {
         btnCommit.setOnClickListener {
-            if (txtAbout.text.isEmpty() || txtAcademic.text.isEmpty() || txtName.text.isEmpty()) {
+            if (txtAbout.text.isEmpty() || txtAcademic.text.isEmpty() || txtName.text.isEmpty() || !containsAlpha(txtName.text.toString())) {
                 when {
                     txtAbout.text.isEmpty() -> Toast.makeText(this, "About cannot be empty", Toast.LENGTH_LONG).show()
                     txtAcademic.text.isEmpty() -> Toast.makeText(this, "Academic record cannot be empty", Toast.LENGTH_LONG).show()
                     txtName.text.isEmpty() -> Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_LONG).show()
+                    !containsAlpha(txtName.text.toString()) -> Toast.makeText(this, "Name must contains letter", Toast.LENGTH_LONG).show()
                 }
             } else if (::imagePath.isInitialized) {
                 showLoading()
@@ -187,6 +188,13 @@ class EditProfileActivity : AppCompatActivity() {
                     }
             }
         }
+    }
+
+    private fun containsAlpha(name: String): Boolean {
+        for (i in name.indices) {
+            if (name[i].isLetter()) return true
+        }
+        return false
     }
 
     private fun initializeImageOnClick() {
