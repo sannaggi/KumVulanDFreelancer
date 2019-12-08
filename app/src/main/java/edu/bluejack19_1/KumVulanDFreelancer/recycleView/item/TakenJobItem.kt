@@ -22,6 +22,7 @@ class TakenJobItem(var job: FinishedJob, val context: Context) : Item(){
         FinishedJob.fetchName(viewHolder.taken_job_client, job.client)
         viewHolder.taken_job_price.text = job.price
         viewHolder.taken_job_status.text = job.status
+        viewHolder.taken_job_category_name.text = job.category
 
         changeStatusColor(viewHolder, job.status)
     }

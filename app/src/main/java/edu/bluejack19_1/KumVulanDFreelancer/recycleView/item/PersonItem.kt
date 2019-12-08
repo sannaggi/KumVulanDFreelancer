@@ -1,16 +1,15 @@
 package edu.bluejack19_1.KumVulanDFreelancer.recycleView.item
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.FieldValue
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import edu.bluejack19_1.KumVulanDFreelancer.*
 import edu.bluejack19_1.KumVulanDFreelancer.firebase.ChatPeople
 import edu.bluejack19_1.KumVulanDFreelancer.firebase.FetchUser
-import edu.bluejack19_1.KumVulanDFreelancer.R
-import edu.bluejack19_1.KumVulanDFreelancer.System
-import edu.bluejack19_1.KumVulanDFreelancer.firebaseDatabase
-import edu.bluejack19_1.KumVulanDFreelancer.firebaseStorageReference
 import kotlinx.android.synthetic.main.person_item_fragment.*
 import java.lang.Exception
 
@@ -38,7 +37,60 @@ class PersonItem(val people: ChatPeople, private val context: Context)
 
         viewHolder.textView_name.text = person.getName();
         viewHolder.textView_last_message.text = people.last_message;
+        viewHolder.btnArchive.setTextColor(Color.LTGRAY)
+        viewHolder.btnStarred.setTextColor(Color.LTGRAY)
+        if(people.isArchive) viewHolder.btnArchive.setTextColor(Color.GREEN)
+        if(people.isStarred) viewHolder.btnStarred.setTextColor(Color.YELLOW)
+        viewHolder.btnArchive.setOnClickListener {
+            if(!people.isArchive) viewHolder.btnArchive.setTextColor(Color.GREEN)
+            else viewHolder.btnArchive.setTextColor(Color.LTGRAY)
+            var toUser = HashMap<String, Any>()
+            toUser.put("chat_people", FieldValue.arrayRemove(
+                    ChatPeople(
+                            people.chat_id,
+                            people.email,
+                            people.isArchive,
+                            people.isStarred,
+                            people.last_message
+                    )))
 
+            firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email.toString()).update(toUser)
+            people.isArchive = !people.isArchive
+            toUser.put("chat_people", FieldValue.arrayUnion(
+                    ChatPeople(
+                            people.chat_id,
+                            people.email,
+                            people.isArchive,
+                            people.isStarred,
+                            people.last_message
+                    )))
+            firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email.toString()).update(toUser)
+        }
+        viewHolder.btnStarred.setOnClickListener {
+            if(!people.isStarred) viewHolder.btnStarred.setTextColor(Color.YELLOW)
+            else viewHolder.btnStarred.setTextColor(Color.LTGRAY)
+            var toUser = HashMap<String, Any>()
+            toUser.put("chat_people", FieldValue.arrayRemove(
+                    ChatPeople(
+                            people.chat_id,
+                            people.email,
+                            people.isArchive,
+                            people.isStarred,
+                            people.last_message
+                    )))
+
+            firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email.toString()).update(toUser)
+            people.isStarred = !people.isStarred
+            toUser.put("chat_people", FieldValue.arrayUnion(
+                    ChatPeople(
+                            people.chat_id,
+                            people.email,
+                            people.isArchive,
+                            people.isStarred,
+                            people.last_message
+                    )))
+            firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email.toString()).update(toUser)
+        }
         try {
             firebaseStorageReference()
                     .child(person.getProfileImage())

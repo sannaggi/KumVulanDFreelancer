@@ -19,7 +19,8 @@ object MoreReviewAdapter{
                         it["name"].toString(),
                         it["profile_image"].toString(),
                         it["rating"] as Number,
-                        it["review"].toString()
+                        it["review"].toString(),
+                        it["id"].toString()
                 ))
             }
 

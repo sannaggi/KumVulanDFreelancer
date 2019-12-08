@@ -14,7 +14,7 @@ object FirebaseUtil {
     private val currentUserDocRef: DocumentReference
             = firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email.toString())
 
-    fun addChatPeopleListener(context: Context, onListen: (List<Item>) -> Unit): ListenerRegistration {
+    fun addChatPeopleListener(context: Context, onListen: (List<ChatPeople>) -> Unit): ListenerRegistration {
         return currentUserDocRef.addSnapshotListener{
             snapshots, e ->
             if(e != null){
@@ -22,7 +22,7 @@ object FirebaseUtil {
                 return@addSnapshotListener
             }
             val items = snapshots!!["chat_people"] as ArrayList<Map<String, Any>>
-            var retItems = mutableListOf<Item>()
+            var retItems = mutableListOf<ChatPeople>()
             items.forEach {
                 val temp = ChatPeople(
                         it["chat_id"].toString(),
@@ -30,7 +30,7 @@ object FirebaseUtil {
                         it["archive"] as Boolean,
                         it["starred"] as Boolean,
                         it["last_message"].toString())
-                retItems.add(PersonItem(temp, context))
+                retItems.add(temp)
             }
 
             onListen(retItems.asReversed());

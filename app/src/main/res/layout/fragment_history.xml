@@ -29,6 +29,21 @@
         android:prompt="@string/history_sort_prompt"
         android:textAlignment="center"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/soft_border_gray"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"/>
+
+    <Spinner
+        android:id="@+id/history_job_category_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/job_categories_array"
+        android:prompt="@string/history_sort_prompt"
+        android:textAlignment="center"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

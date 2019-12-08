@@ -63,17 +63,26 @@ class GivingReviewActivity : AppCompatActivity() {
     }
 
     private fun updateReview(){
-        var forUpdate = HashMap<String, Any>()
-        forUpdate.put("reviews", FieldValue.arrayUnion(
-                Review(
-                        User.getName(),
-                        User.getProfileImageName(),
-                        rating,
-                        reviewString
-                )
-        ))
+        var newReview = HashMap<String, Any>()
+        newReview.put("liker", FieldValue.arrayUnion())
+        newReview.put("disliker", FieldValue.arrayUnion())
 
-        firebaseDatabase().collection("users").document(userID).update(forUpdate)
+        firebaseDatabase().collection("reviews").add(newReview).addOnSuccessListener {
+
+            var forUpdate = HashMap<String, Any>()
+            forUpdate.put("reviews", FieldValue.arrayUnion(
+                    Review(
+                            User.getName(),
+                            User.getProfileImageName(),
+                            rating,
+                            reviewString,
+                            it.id
+                    )
+            ))
+
+            firebaseDatabase().collection("users").document(userID).update(forUpdate)
+        }
+
     }
 
     private fun validateReview() : Boolean{

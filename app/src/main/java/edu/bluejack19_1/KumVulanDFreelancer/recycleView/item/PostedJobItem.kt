@@ -29,6 +29,7 @@ class PostedJobItem (var job: FinishedJob, val context: Context) : Item(){
         FinishedJob.fetchName(viewHolder.posted_job_freelancer, job.freelancer);
         viewHolder.posted_job_price.text = job.price
         viewHolder.posted_job_status.text = job.status
+        viewHolder.posted_job_category_name.text = job.category
 
         changeStatusColor(viewHolder, job.status)
         initReviewRatingButton(viewHolder)
