@@ -1,5 +1,6 @@
 package edu.bluejack19_1.KumVulanDFreelancer.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -46,6 +47,13 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
         initializeSpinner()
         initializeRedirectButton()
         initializeHistoryButton()
+        initializeAddJobButton()
+    }
+
+    private fun initializeAddJobButton() {
+        btnNewJob.setOnClickListener{
+            startActivity(Intent(this.context, AddNewJobActivity::class.java))
+        }
     }
 
     private fun initializeHistoryButton() {
@@ -84,11 +92,13 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
         if (jobsContainer == null) return
 
         progress_circular.visibility = View.GONE
+
+        if (role == TakenJob.CLIENT)
+            btnNewJob.visibility = View.VISIBLE
+
         if (jobs.isEmpty()) {
             if (role == TakenJob.FREELANCER)
                 emptyJobMessageContainer.visibility = View.VISIBLE
-            else
-                btnNewJob.visibility = View.VISIBLE
 
             return
         }
