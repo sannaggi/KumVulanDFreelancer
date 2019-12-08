@@ -56,7 +56,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/jobsContainer"
-            android:background="@drawable/blue_green_gradient">
+            android:background="@drawable/blue_green_gradient"
+            android:paddingBottom="10dp">
 
             <LinearLayout
                 android:id="@+id/progress_circular"
