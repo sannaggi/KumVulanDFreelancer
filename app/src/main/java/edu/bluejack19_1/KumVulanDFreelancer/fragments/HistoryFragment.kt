@@ -158,7 +158,9 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
             }
             shouldInitRecyclerView = false
         }
-        fun updateItems() = jobSection.update(items)
+        fun updateItems(){
+
+        }
 
         if(shouldInitRecyclerView) init()
         else updateItems()
