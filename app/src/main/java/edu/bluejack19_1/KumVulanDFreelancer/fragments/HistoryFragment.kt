@@ -33,6 +33,7 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
     private var shouldInitRecyclerView = true
     private lateinit var jobSection: Section
     private var finishedJobs: List<FinishedJob>? = null
+    private lateinit var finishedJobsFiltered : List<FinishedJob>
     private lateinit var items: List<Item>
     var isClient: Boolean = true
     private var currentSortCategory : String = "None"
@@ -66,7 +67,9 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
             if(it.category == currentJobCategory){
                 toRet.add(it)
             }
+            if(it.category == "None") toRet.add(it)
         }
+        finishedJobsFiltered = toRet
         sort(toRet)
     }
 
@@ -106,7 +109,9 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
         history_sort_category.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent:AdapterView<*>, view: View, position: Int, id: Long){
                 if(this@HistoryFragment.finishedJobs == null) return
-                var finishedJobs = this@HistoryFragment.finishedJobs
+                lateinit var finishedJobs : List<FinishedJob>
+                if(currentJobCategory == "None") finishedJobs = this@HistoryFragment.finishedJobs!!
+                else finishedJobs = this@HistoryFragment.finishedJobsFiltered
                 Log.d("SPINNER", "Spinner selected = ${history_sort_category.getItemAtPosition(position)}")
 
                 this@HistoryFragment.currentSortCategory = history_sort_category.getItemAtPosition(position).toString()

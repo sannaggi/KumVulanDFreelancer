@@ -42,6 +42,9 @@ class ReviewItem (var review: Review, val context: Context) : Item(){
                 viewHolder.review_dislike_btn.setTextColor(Color.RED)
             }
 
+            likerCount = liker.size
+            dislikerCount = disliker.size
+
             viewHolder.review_like_count.text = "${likerCount}"
             viewHolder.review_dislike_count.text = "${dislikerCount}"
         }

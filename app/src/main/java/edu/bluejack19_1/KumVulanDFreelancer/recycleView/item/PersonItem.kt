@@ -37,13 +37,13 @@ class PersonItem(val people: ChatPeople, private val context: Context)
 
         viewHolder.textView_name.text = person.getName();
         viewHolder.textView_last_message.text = people.last_message;
-        viewHolder.btnArchive.setTextColor(Color.LTGRAY)
-        viewHolder.btnStarred.setTextColor(Color.LTGRAY)
+        viewHolder.btnArchive.setTextColor(Color.DKGRAY)
+        viewHolder.btnStarred.setTextColor(Color.DKGRAY)
         if(people.isArchive) viewHolder.btnArchive.setTextColor(Color.GREEN)
-        if(people.isStarred) viewHolder.btnStarred.setTextColor(Color.YELLOW)
+        if(people.isStarred) viewHolder.btnStarred.setTextColor(Color.rgb(245, 183, 38))
         viewHolder.btnArchive.setOnClickListener {
             if(!people.isArchive) viewHolder.btnArchive.setTextColor(Color.GREEN)
-            else viewHolder.btnArchive.setTextColor(Color.LTGRAY)
+            else viewHolder.btnArchive.setTextColor(Color.DKGRAY)
             var toUser = HashMap<String, Any>()
             toUser.put("chat_people", FieldValue.arrayRemove(
                     ChatPeople(
@@ -67,8 +67,8 @@ class PersonItem(val people: ChatPeople, private val context: Context)
             firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email.toString()).update(toUser)
         }
         viewHolder.btnStarred.setOnClickListener {
-            if(!people.isStarred) viewHolder.btnStarred.setTextColor(Color.YELLOW)
-            else viewHolder.btnStarred.setTextColor(Color.LTGRAY)
+            if(!people.isStarred) viewHolder.btnStarred.setTextColor(Color.rgb(245, 183, 38))
+            else viewHolder.btnStarred.setTextColor(Color.DKGRAY)
             var toUser = HashMap<String, Any>()
             toUser.put("chat_people", FieldValue.arrayRemove(
                     ChatPeople(

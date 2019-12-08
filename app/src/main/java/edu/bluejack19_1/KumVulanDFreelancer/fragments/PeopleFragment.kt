@@ -4,6 +4,7 @@ package edu.bluejack19_1.KumVulanDFreelancer.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.os.Message
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,6 +54,7 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
     private fun categoryFilter(chatPeoples: List<ChatPeople>){
         var toRet = mutableListOf<ChatPeople>()
         chatPeoples.forEach {
+            Log.d("PeopleFragment", "${it.chat_id} ${it.isStarred} ${it.isArchive}")
             if(currentChatCategory == "All"){
                 if(!it.isArchive){
                     toRet.add(it)
@@ -63,12 +65,13 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
                     toRet.add(it)
                 }
             }
-            if(currentChatCategory == "Archive"){
+            if(currentChatCategory == "Archived"){
                 if(it.isArchive){
                     toRet.add(it)
                 }
             }
         }
+        Log.d("PeopleFragment", toRet.size.toString())
         convertToItems(toRet)
     }
 
@@ -83,6 +86,7 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
                 var chatPeoples = this@PeopleFragment.chatPeoples
                 this@PeopleFragment.currentChatCategory = people_chat_category.getItemAtPosition(position).toString()
                 categoryFilter(chatPeoples!!)
+                peopleSection.update(this@PeopleFragment.items)
             }
 
         }
@@ -100,7 +104,6 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
             items.add(PersonItem(it, this.activity!!))
         }
         this.items = items
-        peopleSection.update(items)
     }
 
     private fun updateRecyclerView(items: List<ChatPeople>){
@@ -115,10 +118,12 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
                     setOnItemClickListener(onItemClick)
                 }
             }
+            peopleSection.update(this.items)
             shouldInitRecyclerView = false
         }
         fun updateItems(){
             categoryFilter(items!!)
+            peopleSection.update(this.items)
         }
 
         if(shouldInitRecyclerView) init()

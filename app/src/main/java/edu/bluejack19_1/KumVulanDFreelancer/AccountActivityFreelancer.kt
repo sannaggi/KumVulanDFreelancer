@@ -109,11 +109,17 @@ class AccountActivityFreelancer : AppCompatActivity() {
             val profile_image = list[i].get(User.PROFILE_IMAGE).toString()
             val rating = list[i].get(User.RATING).toString().toBigDecimal()
             val review = list[i].get(User.REVIEW).toString()
-            val id = list[i]["id"].toString()
+            val id = list[i].get("id").toString()
             reviews.add(Review(name, profile_image, rating, review, id))
         }
 
-        return reviews.reversed() as ArrayList<Review>
+        var toRet = ArrayList<Review>()
+        reviews.reversed().forEach {
+            toRet.add(it)
+        }
+
+
+        return toRet
     }
 
     private fun loadReview(reviews: ArrayList<Map<String, Any>>) {

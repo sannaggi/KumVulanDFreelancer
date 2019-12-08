@@ -6,37 +6,41 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="AccountActivity" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7238fc13-804a-47d6-bb47-b6d310f69212" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_5_12_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_share_5_12_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/soft_border_pure_green.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/soft_border_red.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/drawable/soft_border_yellow.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_android_sdk_5_11_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_android_sdk_5_12_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_applinks_5_11_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_applinks_5_12_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_common_5_11_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_common_5_12_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_5_11_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_5_11_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_5_12_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_messenger_5_11_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_messenger_5_12_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_places_5_11_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_places_5_12_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_share_5_11_2_aar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/AccountActivityFreelancer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/AccountActivityFreelancer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Firebase/FinishedJob.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Firebase/FinishedJob.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Firebase/FirebaseUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Firebase/FirebaseUtil.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Firebase/Job.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Firebase/Job.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/GivingReviewActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/GivingReviewActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Review.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Review.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/MoreReviewAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/MoreReviewAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/AccountFragmentFreelancer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/AccountFragmentFreelancer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/JobDetailActivityPost.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/JobDetailActivityPost.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/HistoryFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/HistoryFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/JobsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/JobsFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/PeopleFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/PeopleFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/JobItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/JobItem.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PersonItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PersonItem.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PostedJobItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PostedJobItem.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/ReviewItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/ReviewItem.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/TakenJobItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/TakenJobItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_jobs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_jobs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_people.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_people.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/item_job.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/item_job.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/item_posted_job_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/item_posted_job_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/item_taken_job_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/item_taken_job_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/person_item_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/person_item_fragment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/review.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/review.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,10 +98,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/AccountActivityClient.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/HistoryFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1411">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
+            <state relative-caret-position="-17">
+              <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PostedJobItem.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="44" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/TakenJobItem.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="36" column="66" lean-forward="true" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -112,79 +134,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/ReviewAdapter.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_job.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="174">
+              <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/User.kt">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_taken_job_history.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-              <folding>
-                <element signature="e#46#131#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="293">
+              <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_posted_job_history.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/drawable/soft_border_pure_green.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="38" selection-end-line="13" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/AccountActivityFreelancer.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/res/drawable/soft_border_red.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="111" column="28" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
+            <state relative-caret-position="119">
+              <caret line="7" column="27" lean-forward="true" selection-end-line="13" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/TakenJobItem.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/res/drawable/soft_border_yellow.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/MoreReviewAdapter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-              <folding>
-                <element signature="e#55#249#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/ReviewItem.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-63">
-              <caret line="89" column="69" selection-start-line="89" selection-start-column="69" selection-end-line="89" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/AccountFragmentFreelancer.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="199" column="9" lean-forward="true" selection-start-line="199" selection-start-column="9" selection-end-line="199" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/GivingReviewActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="70" selection-start-line="70" selection-end-line="70" />
+            <state relative-caret-position="153">
+              <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -195,9 +196,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
-        <option value="resourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="Kotlin File" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -214,12 +215,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_posted_job_history.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/TakenJobsHistoryFragment.kt" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/item_job_history.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/TakenJob.kt" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/fragment_taken_jobs_history.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/TakenJobsHistoryFragment.kt" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Firebase/FinishedJob.kt" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/PostedJobHistoryFragment.kt" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/HomeFragmentAdapter.kt" />
@@ -241,30 +236,36 @@
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_login_register.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/LoginRegisterActivity.kt" />
         <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/item_posted_job_history.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/item_taken_job_history.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/Job.kt" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/FinishedJob.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/TakenJobItem.kt" />
         <option value="$PROJECT_DIR$/src/main/res/layout/item_job.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/JobItem.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PostedJobItem.kt" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_jobs.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_history.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/HistoryFragment.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/JobsFragment.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/FirebaseUtil.kt" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/person_item_fragment.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/PeopleFragment.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PersonItem.kt" />
         <option value="$PROJECT_DIR$/src/main/res/layout/fragment_people.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/review.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/Review.kt" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/MoreReviewAdapter.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/AccountActivityFreelancer.kt" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/GivingReviewActivity.kt" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/ReviewItem.kt" />
         <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/AccountFragmentFreelancer.kt" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_job_detail_post.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/JobDetailActivityPost.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/FirebaseUtil.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/PeopleFragment.kt" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/person_item_fragment.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PersonItem.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/AccountActivityFreelancer.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/ReviewItem.kt" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/review.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/JobsFragment.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/HistoryFragment.kt" />
+        <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/soft_border_pure_green.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/soft_border_red.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/soft_border_yellow.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/item_taken_job_history.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/item_posted_job_history.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PostedJobItem.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/TakenJobItem.kt" />
       </list>
     </option>
   </component>
@@ -280,6 +281,73 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="firebase" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="fragments" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="item" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -327,68 +395,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="adapters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="firebase" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="fragments" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="KumVulanDFreelancer" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="item" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-            </path>
-            <path>
-              <item name="app" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -531,7 +537,7 @@
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5013423" side_tool="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.3297587" />
       <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.26407507" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" weight="0.3297587" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" weight="0.3297587" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.3297587" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -546,7 +552,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/JobsFragment.kt</url>
-          <line>149</line>
+          <line>154</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -554,82 +560,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/JobAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/FinishedJobAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-520">
-          <caret line="26" column="100" selection-start-line="26" selection-start-column="100" selection-end-line="26" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/FetchUserAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/TakenJobAdapter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/FetchUser.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-340">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_account_freelancer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="163" column="56" lean-forward="true" selection-start-line="163" selection-start-column="56" selection-end-line="163" selection-end-column="56" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="128" selection-start-line="128" selection-end-line="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_login_register.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/AccountFragmentClient.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="123" column="35" lean-forward="true" selection-start-line="123" selection-start-column="35" selection-end-line="123" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/LoginRegisterActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="91" column="10" lean-forward="true" selection-start-line="91" selection-start-column="10" selection-end-line="91" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_home.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -645,39 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_taken_job_history.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="74" column="34" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
-          <folding>
-            <element signature="e#2980#3002#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_posted_job_history.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="84" column="12" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
-          <folding>
-            <element signature="e#2744#2760#0" expanded="true" />
-            <element signature="e#3175#3197#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/Job.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="17" selection-end-column="55" />
-          <folding>
-            <element signature="e#55#141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/FinishedJob.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -685,28 +582,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_job.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
-          <folding>
-            <element signature="e#2674#2696#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/HomeFragment.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PostedJobItem.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -725,13 +604,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/HistoryFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/ChatPeople.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -752,37 +624,10 @@
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/JobsFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-913">
-          <caret line="84" column="49" lean-forward="true" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
-          <folding>
-            <element signature="e#51#1360#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/PeopleFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="133" column="53" selection-start-line="133" selection-start-column="53" selection-end-line="133" selection-end-column="53" />
-          <folding>
-            <element signature="e#57#1086#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/Message.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/FirebaseUtil.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -821,28 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PersonItem.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/person_item_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="60" column="50" lean-forward="true" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="50" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/ReviewActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/fragment_people.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
@@ -853,14 +676,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_account_client.xml">
       <provider selected="true" editor-type-id="text-editor" />
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/review.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
-        </state>
-      </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/adapters/ReviewAdapter.kt">
@@ -887,20 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/AccountActivityFreelancer.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="111" column="28" selection-start-line="111" selection-start-column="28" selection-end-line="111" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/TakenJobItem.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/GivingReviewActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -908,10 +709,172 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/AccountFragmentFreelancer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="199" column="9" selection-start-line="199" selection-start-column="9" selection-end-line="199" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/User.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+          <folding>
+            <element signature="e#46#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/JobDetailActivityPre.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_job_detail_post.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/JobDetailActivityPost.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="81" column="42" selection-start-line="81" selection-start-column="42" selection-end-line="81" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/FirebaseUtil.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/RegisterFreelancerActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1564">
+          <caret line="119" column="40" selection-start-line="119" selection-start-column="40" selection-end-line="119" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/AccountActivityFreelancer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1741">
+          <caret line="121" column="20" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/ReviewActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="642">
+          <caret line="57" column="41" lean-forward="true" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/ReviewItem.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-63">
-          <caret line="89" column="69" selection-start-line="89" selection-start-column="69" selection-end-line="89" selection-end-column="69" />
+        <state relative-caret-position="340">
+          <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/firebase/Job.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="55" lean-forward="true" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding>
+            <element signature="e#55#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/review.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/person_item_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PersonItem.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/PeopleFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="97" column="3" selection-start-line="97" selection-start-column="3" selection-end-line="97" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/JobsFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="86" column="71" selection-start-line="86" selection-start-column="71" selection-end-line="86" selection-end-column="71" />
+          <folding>
+            <element signature="e#51#1360#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/soft_border_brownish_orange.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="13" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/soft_border_green.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/soft_border_pure_green.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="38" selection-end-line="13" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/soft_border_red.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="27" lean-forward="true" selection-end-line="13" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/soft_border_yellow.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -922,20 +885,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/AccountFragmentFreelancer.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_job.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="199" column="9" lean-forward="true" selection-start-line="199" selection-start-column="9" selection-end-line="199" selection-end-column="9" />
+        <state relative-caret-position="174">
+          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_taken_job_history.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/item_posted_job_history.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/fragments/HistoryFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/User.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/PostedJobItem.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-          <folding>
-            <element signature="e#46#131#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="44" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/bluejack19_1/KumVulanDFreelancer/recycleView/item/TakenJobItem.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="36" column="66" lean-forward="true" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
         </state>
       </provider>
     </entry>
