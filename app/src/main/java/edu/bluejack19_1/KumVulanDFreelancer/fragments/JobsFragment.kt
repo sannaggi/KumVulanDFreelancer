@@ -138,7 +138,7 @@ class JobsFragment : Fragment() {
 
     private val onItemClick = OnItemClickListener{ item, view ->
         if(item is JobItem){
-            view.job_click_to_client.setOnClickListener{
+            view.job_client.setOnClickListener{
                 var intent = Intent(this@JobsFragment.activity!!, AccountActivityClient::class.java)
                 intent.putExtra("ID", item.job.client)
                 startActivity(intent)
