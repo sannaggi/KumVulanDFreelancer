@@ -3,6 +3,8 @@ package edu.bluejack19_1.KumVulanDFreelancer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add_new_job.*
 import kotlinx.android.synthetic.main.activity_add_new_job.txtDeadline
@@ -50,15 +52,20 @@ class AddNewJobActivity : AppCompatActivity() {
                     description.isEmpty() -> toast("Job description cannot be empty")
                     !containsAlpha(name) -> toast("Job name must contains alphabet")
                     price.isEmpty() -> toast("Price cannot be empty")
-                    price.toInt() < 10000 -> toast("Job price must be more than Rp. 10000")
+                    price.toLong() < 10000 -> toast("Job price must be more than Rp. 10000")
                 }
             } else {
+                showLoading()
                 firebaseDatabase()
                     .collection("jobs")
                     .add(generateJobData(name, description, price))
                     .addOnSuccessListener {
                         toast("Job successfully inserted")
+                        hideLoading()
                         finish()
+                    }
+                    .addOnFailureListener {
+                        hideLoading()
                     }
             }
         }
@@ -86,5 +93,15 @@ class AddNewJobActivity : AppCompatActivity() {
             if (name[i].isLetter()) return true
         }
         return false
+    }
+
+    private fun showLoading() {
+        progress_loading.visibility = View.VISIBLE
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+    }
+
+    private fun hideLoading() {
+        progress_loading.visibility = View.GONE
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
     }
 }
