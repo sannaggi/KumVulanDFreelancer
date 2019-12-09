@@ -112,7 +112,8 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
         }
 
         onGoingJobsContainer.visibility = View.VISIBLE
-        val jobs = getTakenJobsList(jobs)
+        var jobs = getTakenJobsList(jobs)
+        jobs = ArrayList(sort(jobs))
         val adapter = TakenJobAdapter(this.context!!, jobs)
         setNotifications(jobs)
         listTakenJobs.adapter = adapter
@@ -131,8 +132,16 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
         listTakenJobs.layoutParams = params
     }
 
-    private fun setNotifications(jobs: ArrayList<TakenJob>) {
+    private fun sort(jobs: List<TakenJob>): List<TakenJob> {
+        var jobs2 = jobs
 
+        jobs2 = jobs2.sortedBy {
+            SimpleDateFormat("dd/MM/yyyy").parse(it.deadline)
+        }
+        return jobs2
+    }
+
+    private fun setNotifications(jobs: ArrayList<TakenJob>) {
         for(job in jobs) {
             val calendar = Calendar.getInstance()
 
