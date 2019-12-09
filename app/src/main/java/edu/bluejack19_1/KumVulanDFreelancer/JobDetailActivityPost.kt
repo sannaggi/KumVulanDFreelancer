@@ -251,7 +251,7 @@ class JobDetailActivityPost : AppCompatActivity() {
             .child(path)
             .downloadUrl
             .addOnSuccessListener{uri ->
-                if (img != null) {
+                if (img != null && this != null) {
                     Glide.with(this)
                         .load(uri)
                         .into(img)

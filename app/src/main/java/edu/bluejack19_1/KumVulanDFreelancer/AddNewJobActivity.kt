@@ -30,10 +30,18 @@ class AddNewJobActivity : AppCompatActivity() {
 
     private fun initializeDeadlineView() {
         deadline = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-        Log.d("testt", deadline)
 
+        val minDate = Calendar.getInstance()
+
+        txtDeadline.minDate = minDate.timeInMillis
         txtDeadline.setOnDateChangeListener {_, year, month, day ->
-            deadline = "$day/$month/$year"
+            var dayString = day.toString()
+            var monthString = (month + 1).toString()
+
+            Log.d("testt", "month $monthString")
+            if (day < 10) dayString = "0$dayString"
+            if (month + 1 < 10) monthString = "0$monthString"
+            deadline = "$dayString/$monthString/$year"
         }
     }
 
