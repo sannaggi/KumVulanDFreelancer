@@ -23,6 +23,7 @@ class GivingReviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_giving_review)
 
+        System.last_activity = System.HOME_FRAGMENT
         setRatingColor()
         giving_review_star1.setOnClickListener {
             rating = 1
@@ -50,6 +51,7 @@ class GivingReviewActivity : AppCompatActivity() {
 
             updateJob()
             updateReview()
+            System.last_activity = System.HOME_FRAGMENT
             this@GivingReviewActivity.finish()
         }
     }

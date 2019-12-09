@@ -72,25 +72,27 @@
                 android:layout_height="wrap_content"
                 android:text="👎"
                 android:textSize="20dp"
-                android:layout_marginRight="3dp"/>
+                android:layout_marginRight="5dp"/>
             <TextView
                 android:id="@+id/review_dislike_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dislike Count"/>
+                android:text="Dislike Count"
+                android:layout_marginRight="12dp"/>
             <TextView
                 android:id="@+id/review_like_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="👍"
                 android:textSize="20dp"
-                android:layout_marginRight="3dp"/>
+                android:layout_marginRight="5dp"/>
 
             <TextView
                 android:id="@+id/review_like_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Like Count"/>
+                android:text="Like Count"
+                android:layout_marginRight="5dp"/>
         </LinearLayout>
 
     </LinearLayout>

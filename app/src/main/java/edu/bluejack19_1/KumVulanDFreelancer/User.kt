@@ -24,19 +24,6 @@ class User {
         val CLIENT = "Client"
         val DEFAULT_PROFILE_IMAGE = "default_profile.png"
         val CHAT_PEOPLE = "chat_people"
-
-//        val userListener = checkUpdate()
-//
-//        private fun checkUpdate() : ListenerRegistration{
-//            return firebaseDatabase().collection("users").document(firebaseAuth().currentUser?.email.toString()).addSnapshotListener{
-//                snapshots, e ->
-//                if(e != null){
-//                    return@addSnapshotListener
-//                }
-//                data = snapshots?.data as HashMap<String, Any>
-//            }
-//        }
-
         fun getChatPeople() : ArrayList<HashMap<String, Any>>?{
             return data?.get(CHAT_PEOPLE) as ArrayList<HashMap<String, Any>>?
         }

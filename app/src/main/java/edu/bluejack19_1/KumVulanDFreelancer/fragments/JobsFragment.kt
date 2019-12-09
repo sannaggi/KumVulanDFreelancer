@@ -23,6 +23,7 @@ import edu.bluejack19_1.KumVulanDFreelancer.AccountActivityClient
 import edu.bluejack19_1.KumVulanDFreelancer.R
 import edu.bluejack19_1.KumVulanDFreelancer.System
 import edu.bluejack19_1.KumVulanDFreelancer.adapters.JobAdapter
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.FirebaseUtil
 import edu.bluejack19_1.KumVulanDFreelancer.firebase.Job
 import edu.bluejack19_1.KumVulanDFreelancer.firebaseDatabase
 import edu.bluejack19_1.KumVulanDFreelancer.recycleView.item.JobItem
@@ -37,6 +38,7 @@ class JobsFragment : Fragment() {
     private var shouldInitRecyclerView = true
     private lateinit var jobSection: Section
     private var jobs: List<Job>? = null
+    private lateinit var jobsFiltered : List<Job>
     private lateinit var items: List<Item>
     private var currentSortCategory : String = "None"
     private var currentJobCategory : String = "None"
@@ -67,7 +69,9 @@ class JobsFragment : Fragment() {
             if(it.category == currentJobCategory){
                 toRet.add(it)
             }
+            if(currentJobCategory == "None") toRet.add(it)
         }
+        jobsFiltered = toRet
         sort(toRet)
     }
 
@@ -86,6 +90,12 @@ class JobsFragment : Fragment() {
             }
 
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        FirebaseUtil.removeListener(jobListenerRegistration)
+        shouldInitRecyclerView = true
     }
 
     private fun initializeSearchBox(){
@@ -108,7 +118,9 @@ class JobsFragment : Fragment() {
         job_sort_spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long){
                 if(this@JobsFragment.jobs == null) return
-                var finishedJobs = this@JobsFragment.jobs
+                lateinit var finishedJobs : List<Job>
+                if(currentJobCategory == "None") finishedJobs = this@JobsFragment.jobs!!
+                else finishedJobs = this@JobsFragment.jobsFiltered
                 currentSortCategory = job_sort_spinner.getItemAtPosition(position).toString()
                 sort(finishedJobs!!)
             }
@@ -159,7 +171,7 @@ class JobsFragment : Fragment() {
             shouldInitRecyclerView = false
         }
         fun updateItems(){
-            sort(jobs)
+
         }
 
         if(shouldInitRecyclerView) init()

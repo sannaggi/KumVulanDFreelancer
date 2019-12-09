@@ -21,6 +21,9 @@ object FirebaseUtil {
                 Log.e("FIRESTORE", "Chat People Listener error", e)
                 return@addSnapshotListener
             }
+            if(snapshots!!["chat_people"] == null){
+                return@addSnapshotListener
+            }
             val items = snapshots!!["chat_people"] as ArrayList<Map<String, Any>>
             var retItems = mutableListOf<ChatPeople>()
             items.forEach {

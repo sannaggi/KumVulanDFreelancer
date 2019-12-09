@@ -38,11 +38,11 @@ class PostedJobItem (var job: FinishedJob, val context: Context) : Item(){
     private fun changeStatusColor(viewHolder: ViewHolder, status : String){
         var status = status
         if(status.equals("Finished")) viewHolder.posted_job_status
-                .setTextColor(Color.GREEN)
+                .setBackgroundResource(R.drawable.soft_border_pure_green)
         else if(status.equals("Rejected")) viewHolder.posted_job_status
-                .setTextColor(Color.RED)
+                .setBackgroundResource(R.drawable.soft_border_yellow)
         else if(status.equals("Canceled")) viewHolder.posted_job_status
-                .setTextColor(Color.YELLOW)
+                .setBackgroundResource(R.drawable.soft_border_red)
 
     }
 

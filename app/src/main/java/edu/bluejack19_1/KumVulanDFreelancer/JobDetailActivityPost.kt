@@ -79,7 +79,7 @@ class JobDetailActivityPost : AppCompatActivity() {
     private fun initializeFreelancerImageOnClick() {
         imgFreelancer.setOnClickListener {
             val intent = Intent(this, AccountActivityFreelancer::class.java)
-            intent.putExtra("ID", data.get(TakenJob.CLIENT).toString())
+            intent.putExtra("ID", data.get(TakenJob.FREELANCER).toString())
 
             startActivity(intent)
         }
