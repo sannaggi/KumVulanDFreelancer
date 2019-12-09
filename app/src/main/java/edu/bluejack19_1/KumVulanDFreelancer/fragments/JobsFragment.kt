@@ -23,6 +23,7 @@ import edu.bluejack19_1.KumVulanDFreelancer.AccountActivityClient
 import edu.bluejack19_1.KumVulanDFreelancer.R
 import edu.bluejack19_1.KumVulanDFreelancer.System
 import edu.bluejack19_1.KumVulanDFreelancer.adapters.JobAdapter
+import edu.bluejack19_1.KumVulanDFreelancer.firebase.FirebaseUtil
 import edu.bluejack19_1.KumVulanDFreelancer.firebase.Job
 import edu.bluejack19_1.KumVulanDFreelancer.firebaseDatabase
 import edu.bluejack19_1.KumVulanDFreelancer.recycleView.item.JobItem
@@ -89,6 +90,12 @@ class JobsFragment : Fragment() {
             }
 
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        FirebaseUtil.removeListener(jobListenerRegistration)
+        shouldInitRecyclerView = true
     }
 
     private fun initializeSearchBox(){
