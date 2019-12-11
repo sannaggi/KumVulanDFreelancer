@@ -225,7 +225,7 @@ class TakenJobAdapter(private val context: Context, private val jobs: ArrayList<
             .child(User.getProfileImagePath(imagePath))
             .downloadUrl
             .addOnSuccessListener{uri ->
-                if (row.imgOtherParty != null) {
+                if (row.imgOtherParty != null && this != null && this.context != null && row != null) {
                     Glide.with(this.context)
                         .load(uri)
                         .into(row.imgOtherParty)
