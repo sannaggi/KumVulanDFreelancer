@@ -134,6 +134,7 @@ class MainActivity : AppCompatActivity() {
         jobsFragment = JobsFragment()
         addFragment(homeFragment)
 
+        if (firebaseAuth().currentUser == null) return
         val jobs = ArrayList<HashMap<String, Any>>()
         firebaseDatabase()
             .collection("jobs")

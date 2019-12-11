@@ -107,6 +107,9 @@ class PeopleFragment(parent: MainActivity) : Fragment() {
     }
 
     private fun updateRecyclerView(items: List<ChatPeople>){
+
+        if(this@PeopleFragment.context == null) return
+
         this@PeopleFragment.chatPeoples = items
         fun init(){
             categoryFilter(items)

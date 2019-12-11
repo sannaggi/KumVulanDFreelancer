@@ -67,7 +67,7 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
             if(it.category == currentJobCategory){
                 toRet.add(it)
             }
-            if(it.category == "None") toRet.add(it)
+            if(currentJobCategory == "None") toRet.add(it)
         }
         finishedJobsFiltered = toRet
         sort(toRet)
@@ -145,6 +145,7 @@ class HistoryFragment(parent: MainActivity) : Fragment() {
 
     private fun updateRecyclerView(finishedJobs: List<FinishedJob>){
         this.finishedJobs = finishedJobs
+        if(this@HistoryFragment.context == null) return
         convertToItems(this.finishedJobs!!)
 
         fun init(){
