@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add_new_job.*
 import kotlinx.android.synthetic.main.activity_add_new_job.txtDeadline
@@ -16,9 +18,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class AddNewJobActivity : AppCompatActivity() {
+class AddNewJobActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     var deadline: String = ""
+    var category: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,30 @@ class AddNewJobActivity : AppCompatActivity() {
 
         initializeSubmitButton()
         initializeDeadlineView()
+        intializeCategorySpinner()
+    }
+
+    private fun intializeCategorySpinner()  {
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.job_categories_array,
+            android.R.layout.simple_spinner_item
+        ) .also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
+        spinner.setSelection(0)
+        spinner.onItemSelectedListener = this
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        category = spinner.selectedItem.toString()
+        Log.d("testt", category)
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun initializeDeadlineView() {
@@ -88,6 +115,7 @@ class AddNewJobActivity : AppCompatActivity() {
         data.set("est_price", price.toInt())
         data.set("client", firebaseAuth().currentUser!!.email.toString())
         data.set("applicants", ArrayList<String>())
+        data.set("category", category)
 
         return data
     }

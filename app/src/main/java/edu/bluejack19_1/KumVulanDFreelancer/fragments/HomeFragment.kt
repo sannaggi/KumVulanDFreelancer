@@ -117,7 +117,8 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
         }
 
         onGoingJobsContainer.visibility = View.VISIBLE
-        val jobs = getTakenJobsList(jobs)
+        var jobs = getTakenJobsList(jobs)
+        jobs = ArrayList(sort(jobs))
         val adapter = TakenJobAdapter(this.context!!, jobs)
 //        setNotifications(jobs)
         listTakenJobs.adapter = adapter
@@ -188,6 +189,68 @@ class HomeFragment(main: MainActivity): Fragment(), OnItemSelectedListener {
 //
 //        return asc
 //    }
+
+    private fun sort(jobs: List<TakenJob>): List<TakenJob> {
+        var jobs2 = jobs
+
+        jobs2 = jobs2.sortedBy {
+            SimpleDateFormat("dd/MM/yyyy").parse(it.deadline)
+        }
+        return jobs2
+    }
+
+    private fun setNotifications(jobs: ArrayList<TakenJob>) {
+        for(job in jobs) {
+            val calendar = Calendar.getInstance()
+
+            val dateParts = job.deadline.split("/")
+            val date = dateParts[0].toInt()
+            val month = dateParts[1].toInt() - 1
+            val year = dateParts[2].toInt()
+            val currDate = calendar.get(Calendar.DAY_OF_MONTH)
+            val currYear = calendar.get(Calendar.YEAR)
+            val currMonth = calendar.get(Calendar.MONTH)
+            val sdf = SimpleDateFormat("dd/MM/yyyy")
+            val today = sdf.format(calendar.time)
+
+            Log.d("testt", "$today today")
+            Log.d("testt", job.deadline + " deadline")
+            Log.d("testt", "$date, $month, $year aa")
+            Log.d("testt", "$currDate, $currMonth, $currYear bb")
+
+            val limit = Calendar.getInstance()
+            limit.set(year, month, date + 1)
+            calendar.set(year, month, date - 2)
+            Log.d("testt", calendar.get(Calendar.DAY_OF_MONTH).toString())
+
+            if (Calendar.getInstance().after(calendar) && Calendar.getInstance().before(limit)) {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+
+                val nbuilder = NotificationCompat.Builder(context!!, "NOTIF_CHANNEL")
+                nbuilder
+                    .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                    .setContentTitle("Taken Job Notification")
+                    .setContentText("Your job, " + job.name + " will meet its deadline soon")
+                    .setWhen(calendar.timeInMillis)
+                    .setContentIntent(pendingIntent)
+
+                val manager = mainActivityInstance.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                manager.notify(ascii(job.id), nbuilder.build())
+            }
+        }
+    }
+
+    private fun ascii(str: String): Int {
+        var asc = 0
+        for (c in str) {
+            asc += c.toByte()
+        }
+
+        return asc
+    }
 
     private fun getTakenJobsList(list: ArrayList<HashMap<String, Any>>): ArrayList<TakenJob> {
         val jobs = ArrayList<TakenJob>()

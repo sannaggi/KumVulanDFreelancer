@@ -94,6 +94,14 @@ class JobsFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d("JobsFragment", "Kontolmu di destroy")
+        FirebaseUtil.removeListener(jobListenerRegistration)
+        shouldInitRecyclerView = true
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.d("JobsFragment", "Kontolmu di detach")
         FirebaseUtil.removeListener(jobListenerRegistration)
         shouldInitRecyclerView = true
     }
@@ -149,6 +157,7 @@ class JobsFragment : Fragment() {
 
     private fun convertToItems(jobs: List<Job>){
         var items = mutableListOf<Item>()
+        if (this.activity == null) return
         jobs.forEach{
             items.add(JobItem(it, this.activity!!))
         }
@@ -158,6 +167,7 @@ class JobsFragment : Fragment() {
 
     private fun updateRecyclerView(jobs: List<Job>){
         this.jobs = jobs
+        if (this@JobsFragment.context == null) return
         convertToItems(jobs)
         fun init(){
             job_recycler_view.apply {
